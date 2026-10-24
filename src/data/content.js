@@ -3,8 +3,6 @@
 export const CONTACT = {
   company: "Capricon Technologies, Tanzania",
   whatsapp: "255700000000", // PLACEHOLDER: international format, no plus sign
-  phoneDisplay: "+255 700 000 000", // PLACEHOLDER
-  email: "hello@example.com", // PLACEHOLDER
   location: { en: "Tanzania", sw: "Tanzania" }, // PLACEHOLDER: add office city
   bookingUrl: "", // optional: Calendly or Google Calendar link; hidden when empty
   social: [
@@ -49,20 +47,36 @@ export const UI = {
       en: "We design and build business systems, SaaS products and websites for Tanzanian and East African companies. Mobile money, Swahili and local workflows are built in from day one.",
       sw: "Tunabuni na kujenga mifumo ya biashara, bidhaa za SaaS na tovuti kwa kampuni za Tanzania na Afrika Mashariki. Malipo ya simu, Kiswahili na mtiririko wa kazi wa hapa vimejumuishwa tangu siku ya kwanza.",
     },
+    // Three loud words, one per line.
+    words: {
+      en: ["Build.", "Ship.", "Scale."],
+      sw: ["Jenga.", "Tuma.", "Kua."],
+    },
+    tags: [
+      { en: "Systems", sw: "Mifumo" },
+      { en: "SaaS", sw: "SaaS" },
+      { en: "Websites", sw: "Tovuti" },
+    ],
+    lead: {
+      en: "Business systems, SaaS and websites for Tanzanian and East African companies. Mobile money and Swahili built in from day one.",
+      sw: "Mifumo ya biashara, SaaS na tovuti kwa kampuni za Tanzania na Afrika Mashariki. Malipo ya simu na Kiswahili tangu siku ya kwanza.",
+    },
     primary: { en: "Start a project", sw: "Anza mradi" },
     secondary: { en: "See our work", sw: "Tazama kazi zetu" },
-    builds: { en: "What we build", sw: "Tunachojenga" },
+    buildFor: { en: "We build for", sw: "Tunajenga kwa" },
+    // Each one is work we have actually done or are doing.
+    audiences: [
+      { en: "car importers.", sw: "waagizaji wa magari." },
+      { en: "shop owners.", sw: "wenye maduka." },
+      { en: "event organisers.", sw: "waandaaji wa matukio." },
+      { en: "WiFi hotspot owners.", sw: "wamiliki wa hotspot za WiFi." },
+      { en: "clearing and forwarding firms.", sw: "kampuni za kusafirisha mizigo." },
+    ],
     // PLACEHOLDER numbers: replace with real, checkable figures
     stats: [
-      { v: "6", l: { en: "Products and client systems", sw: "Bidhaa na mifumo ya wateja" } },
+      { v: "6", l: { en: "Products and systems", sw: "Bidhaa na mifumo" } },
       { v: "4", l: { en: "Core services", sw: "Huduma kuu" } },
-      { v: "2", l: { en: "Languages: Swahili and English", sw: "Lugha: Kiswahili na Kiingereza" } },
-    ],
-    buildsList: [
-      { en: "Business systems", sw: "Mifumo ya biashara" },
-      { en: "SaaS products", sw: "Bidhaa za SaaS" },
-      { en: "Websites and e-commerce", sw: "Tovuti na biashara mtandaoni" },
-      { en: "Digital strategy", sw: "Mkakati wa kidijitali" },
+      { v: "2", l: { en: "Languages", sw: "Lugha" } },
     ],
   },
   work: {
@@ -80,6 +94,8 @@ export const UI = {
     view: { en: "View case study", sw: "Soma kisa kamili" },
     building: { en: "Currently building", sw: "Tunayojenga sasa" },
     shotNote: { en: "Screenshot to add", sw: "Picha itaongezwa" },
+    prev: { en: "Previous", sw: "Iliyotangulia" },
+    next: { en: "Next", sw: "Inayofuata" },
   },
   case: {
     back: { en: "All work", sw: "Kazi zote" },
@@ -268,8 +284,20 @@ export const UI = {
     waDefault: { en: "a project.", sw: "mradi." },
   },
   footer: {
+    tagline: {
+      en: "Software for East African business, built in Tanzania.",
+      sw: "Programu za biashara za Afrika Mashariki, zilizojengwa Tanzania.",
+    },
+    callTitle: { en: "Prefer a call?", sw: "Unapendelea kupigiwa simu?" },
+    callText: { en: "Leave your number and we call you back.", sw: "Acha namba yako, tutakupigia." },
+    callPlaceholder: { en: "Your phone number", sw: "Namba yako ya simu" },
+    callBtn: { en: "Call me", sw: "Nipigie" },
+    callSending: { en: "Sending", sw: "Inatuma" },
+    callDone: { en: "Thanks. We will call you.", sw: "Asante. Tutakupigia." },
     links: { en: "Quick links", sw: "Viungo" },
+    ourWork: { en: "Our work", sw: "Kazi zetu" },
     contact: { en: "Contact", sw: "Mawasiliano" },
+    payLabel: { en: "Payments we build for", sw: "Malipo tunayojenga" },
     rights: { en: "All rights reserved.", sw: "Haki zote zimehifadhiwa." },
   },
   wa: { en: "WhatsApp", sw: "WhatsApp" },
@@ -450,6 +478,13 @@ export const TEAM = [
     photo: "",
     placeholder: true,
   },
+];
+
+// Shown as small chips in the footer. PLACEHOLDER: keep only what you have really built.
+export const FOOTER_PAYMENTS = [
+  { en: "Mobile money", sw: "Pesa ya simu" },
+  { en: "Card payments", sw: "Malipo ya kadi" },
+  { en: "Bank transfer", sw: "Uhamisho wa benki" },
 ];
 
 export const waLink = (text) =>

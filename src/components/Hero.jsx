@@ -1,62 +1,89 @@
+import { lazy, Suspense } from "react";
 import { useLang } from "../lib/i18n.jsx";
 import { UI } from "../data/content.js";
+import board from "../assets/hero-board.webp";
 
-function Stat({ value, label, className = "" }) {
+// three.js is large, so it loads after the first paint. The photo and headline show right away.
+const Hero3D = lazy(() => import("./Hero3D.jsx"));
+
+function Plus() {
   return (
-    <div className={`glass flex flex-col justify-between gap-10 rounded-3xl p-6 ${className}`}>
-      <p className="text-sm text-mute">{label}</p>
-      <p className="num text-6xl font-semibold tracking-tight">{value}</p>
-    </div>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+      <path d="M6 1v10M1 6h10" />
+    </svg>
   );
 }
 
 export default function Hero() {
-  const { tr } = useLang();
+  const { lang, tr } = useLang();
   const h = UI.hero;
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="orb -right-24 -top-20 h-80 w-80" aria-hidden="true" />
-      <div className="orb -left-32 top-2/3 h-72 w-72" aria-hidden="true" />
+    <section className="wrap pb-3 pt-3 md:pt-4">
+      <div className="relative isolate flex min-h-[min(46rem,calc(100svh-5.5rem))] flex-col overflow-hidden rounded-[2rem] bg-[#0a0a0a] text-white">
+        <img src={board} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70" draggable="false" />
+        <div className="absolute inset-0 -z-10 bg-black/55" aria-hidden="true" />
+        <Suspense fallback={null}>
+          <Hero3D />
+        </Suspense>
 
-      <div className="wrap relative pb-14 pt-12 md:pb-20 md:pt-20">
-        <p className="flex items-center gap-2 text-sm font-medium text-mute">
-          <span className="inline-block h-2.5 w-2.5 bg-ink" aria-hidden="true" />
-          {tr(h.eyebrow)}
-        </p>
+        <div className="relative z-10 grid flex-1 gap-8 p-6 pt-10 md:grid-cols-[1.25fr_1fr] md:p-12 md:pt-14">
+          <div className="flex flex-col">
+            <h1
+              key={lang}
+              className="text-[clamp(3.4rem,13vw,8.6rem)] font-extrabold uppercase leading-[0.86] tracking-tight"
+            >
+              {h.words[lang].map((w, i) => (
+                <span key={w} className="block">
+                  <span className="word">
+                    <span style={{ "--d": `${120 + i * 160}ms` }}>{w}</span>
+                  </span>
+                </span>
+              ))}
+            </h1>
 
-        <h1 className="mt-6 max-w-4xl text-[clamp(2.25rem,6.2vw,4.75rem)] font-semibold leading-[1.04] tracking-tight">
-          {tr(h.title)}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mute">{tr(h.sub)}</p>
-        <div className="mt-9 flex flex-wrap gap-3">
-          <a href="#contact" className="rounded-full bg-ink px-7 py-3.5 font-medium text-paper hover:opacity-80">
-            {tr(h.primary)}
-          </a>
-          <a
-            href="#work"
-            className="rounded-full border border-line-strong px-7 py-3.5 font-medium hover:bg-ink hover:text-paper"
-          >
-            {tr(h.secondary)}
-          </a>
-        </div>
-
-        <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4">
-          <div className="glass col-span-2 rounded-3xl p-6 md:row-span-2">
-            <p className="text-sm text-mute">{tr(h.builds)}</p>
-            <ul className="mt-6 divide-y divide-line">
-              {h.buildsList.map((b, i) => (
-                <li key={i}>
-                  <a href="#services" className="block py-3.5 text-xl font-semibold tracking-tight hover:opacity-60">
-                    {tr(b)}
-                  </a>
+            <ul className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.2em] [text-shadow:0_1px_10px_rgba(0,0,0,0.9)] md:text-sm">
+              {h.tags.map((t, i) => (
+                <li key={i} className="flex items-center gap-4">
+                  {i > 0 && <Plus />}
+                  {tr(t)}
                 </li>
               ))}
             </ul>
           </div>
-          <Stat value={h.stats[0].v} label={tr(h.stats[0].l)} />
-          <Stat value={h.stats[1].v} label={tr(h.stats[1].l)} />
-          <Stat value={h.stats[2].v} label={tr(h.stats[2].l)} className="col-span-2" />
+
+          <div className="flex flex-col justify-end md:items-start md:pb-2 md:pl-6">
+            <div className="band-glass rounded-3xl bg-black/50 p-5 md:max-w-md md:p-6">
+              <p className="text-base leading-relaxed text-white md:text-[1.05rem]">{tr(h.lead)}</p>
+              <div className="mt-5 flex flex-wrap items-center gap-5">
+                <a
+                  href="#contact"
+                  className="group flex items-center gap-3 rounded-full bg-white py-1.5 pl-6 pr-1.5 text-sm font-semibold text-black hover:opacity-90"
+                >
+                  {tr(h.primary)}
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M4 12L12 4M5.5 4H12v6.5" />
+                    </svg>
+                  </span>
+                </a>
+                <a href="#work" className="text-sm font-semibold underline decoration-white/40 underline-offset-4 hover:decoration-white">
+                  {tr(h.secondary)}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative z-10 p-3 pt-0 md:p-5 md:pt-0">
+          <dl className="band-glass grid grid-cols-3 divide-x divide-white/15 rounded-2xl">
+            {h.stats.map((s, i) => (
+              <div key={i} className="flex flex-col gap-1 px-3 py-3 md:flex-row md:items-baseline md:justify-center md:gap-3 md:px-5">
+                <dt className="text-xs leading-tight text-white/70 md:text-sm">{tr(s.l)}</dt>
+                <dd className="num order-first text-2xl font-semibold leading-none tracking-tight md:text-3xl">{s.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

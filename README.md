@@ -21,7 +21,7 @@ npm run build
 
 ## Before launch (placeholders to replace)
 
-1. `CONTACT` in `content.js`: WhatsApp number (format `255...`), phone, email, office city, social links, optional booking link.
+1. `CONTACT` in `content.js`: WhatsApp number (format `255...`, used only for the chat links, never shown on the page), office city, social links, optional booking link.
 2. Confirm each project in `PROJECTS` is public and the client agrees (Yetu Motors, Sunlight, AB Global). Confirm the status and stack lines.
 3. Add a screenshot per project at `public/work/<slug>.webp`, then set `image: "/work/<slug>.webp"`.
 4. Add `result` text to a project once there is a real, checkable number. The Result block only shows when it is set.

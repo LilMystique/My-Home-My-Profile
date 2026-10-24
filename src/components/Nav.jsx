@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "../lib/i18n.jsx";
 import { UI } from "../data/content.js";
+import Logo from "./Logo.jsx";
 
 const LINKS = [
   ["work", UI.nav.work],
@@ -101,8 +102,8 @@ export default function Nav() {
             </button>
           </div>
 
-          <a href="#/" className="text-sm font-semibold uppercase tracking-[0.28em] md:text-base">
-            Capricon
+          <a href="#/" aria-label="Capricon Technologies" className="flex items-center">
+            <Logo className="h-8 md:h-9" />
           </a>
 
           <div className="flex items-center justify-end gap-2 md:gap-4">
@@ -138,7 +139,7 @@ export default function Nav() {
             aria-label="Main"
           >
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold uppercase tracking-[0.28em]">Capricon</span>
+              <Logo className="h-8" />
               <button
                 type="button"
                 onClick={() => setOpen(false)}

@@ -16,7 +16,7 @@ export default function Engage() {
   const [cur, setCur] = useState("TZS");
 
   return (
-    <section id="engage" className="wrap py-16 md:py-24">
+    <section id="engage" className="wrap py-14 md:py-20">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(e.title)}</h2>

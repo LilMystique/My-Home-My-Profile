@@ -118,11 +118,6 @@ export default function Contact({ intent }) {
               </a>
             )}
           </div>
-          <p className="num mt-8 text-band-mute">
-            {CONTACT.phoneDisplay}
-            <br />
-            {CONTACT.email}
-          </p>
         </div>
 
         {state === "done" ? (

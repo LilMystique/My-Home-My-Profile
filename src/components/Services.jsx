@@ -8,7 +8,7 @@ export default function Services() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="services" className="wrap py-16 md:py-24">
+    <section id="services" className="wrap py-14 md:py-20">
       <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(s.title)}</h2>
 
       <ul className="tile mt-10 divide-y divide-line overflow-hidden">
@@ -47,9 +47,11 @@ export default function Services() {
         })}
       </ul>
 
-      <a href="#contact" className="mt-10 inline-block rounded-full bg-ink px-7 py-3.5 font-medium text-paper hover:opacity-80">
-        {tr(UI.nav.cta)}
-      </a>
+      <div className="mt-10 flex justify-center">
+        <a href="#contact" className="rounded-full bg-ink px-7 py-3.5 font-medium text-paper hover:opacity-80">
+          {tr(UI.nav.cta)}
+        </a>
+      </div>
     </section>
   );
 }
