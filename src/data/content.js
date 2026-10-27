@@ -409,7 +409,49 @@ export const PROJECTS = [
     },
     result: null,
     stack: ["React", "Supabase", "Mobile money"],
-    image: "",
+    image: "/work/wifi-kitonga.webp",
+  },
+  {
+    slug: "volta",
+    name: "Volta",
+    category: "saas",
+    status: { en: "Live", sw: "Inafanya kazi" },
+    line: {
+      en: "Online store where East African artists sell merch and music direct to fans.",
+      sw: "Duka la mtandaoni ambapo wasanii wa Afrika Mashariki huuza bidhaa na muziki moja kwa moja kwa mashabiki.",
+    },
+    problem: {
+      en: "Artists sell through DMs and screenshots, with no storefront, no catalogue and no easy way to pay.",
+      sw: "Wasanii huuza kupitia DM na picha za skrini, bila duka, orodha ya bidhaa wala njia rahisi ya kulipa.",
+    },
+    built: {
+      en: "A multi-artist commerce platform with artist pages, drops and a searchable shop, built for East Africa.",
+      sw: "Jukwaa la biashara la wasanii wengi lenye kurasa za wasanii, drops na duka linalotafutika, lililojengwa kwa Afrika Mashariki.",
+    },
+    result: null,
+    stack: ["Next.js", "Supabase", "Tailwind"],
+    image: "/work/volta.webp",
+  },
+  {
+    slug: "vera",
+    name: "Vera International Travel",
+    category: "websites",
+    status: { en: "Live", sw: "Inafanya kazi" },
+    line: {
+      en: "Website for an IATA-accredited travel agency in Dar es Salaam.",
+      sw: "Tovuti ya wakala wa safari mwenye IATA jijini Dar es Salaam.",
+    },
+    problem: {
+      en: "Travellers needed a clear way to ask for flights, hotels, car hire and safaris without calling around.",
+      sw: "Wasafiri walihitaji njia wazi ya kuomba tiketi, hoteli, magari na safari za utalii bila kupiga simu nyingi.",
+    },
+    built: {
+      en: "A website with an enquiry form for flights, hotels, safaris and car hire, plus safari and tour pages.",
+      sw: "Tovuti yenye fomu ya maulizo ya tiketi, hoteli, safari na magari, pamoja na kurasa za safari na ziara.",
+    },
+    result: null,
+    stack: ["Website", "Enquiry form"],
+    image: "/work/vera.webp",
   },
   {
     slug: "sunlight-abglobal",
