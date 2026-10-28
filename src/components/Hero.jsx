@@ -1,10 +1,14 @@
 import { lazy, Suspense } from "react";
 import { useLang } from "../lib/i18n.jsx";
 import { UI } from "../data/content.js";
-import board from "../assets/hero-board.webp";
+import photo from "../assets/hero-photo.webp";
 
 // three.js is large, so it loads after the first paint. The photo and headline show right away.
 const Hero3D = lazy(() => import("./Hero3D.jsx"));
+
+// Hero background: a dark workspace photo, shown in black and white, with the floating tech words on top.
+const PHOTO_POS = "50% 22%";
+const PHOTO_FILTER = "grayscale(1) contrast(1.15) brightness(1.35)";
 
 function Plus() {
   return (
@@ -19,15 +23,21 @@ export default function Hero() {
   const h = UI.hero;
 
   return (
-    <section className="wrap pb-3 pt-3 md:pt-4">
-      <div className="relative isolate flex min-h-[min(46rem,calc(100svh-5.5rem))] flex-col overflow-hidden rounded-[2rem] bg-[#0a0a0a] text-white">
-        <img src={board} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70" draggable="false" />
-        <div className="absolute inset-0 -z-10 bg-black/55" aria-hidden="true" />
+    <section>
+      <div className="relative isolate flex min-h-[min(46rem,calc(100svh-4rem))] flex-col overflow-hidden bg-[#0a0a0a] text-white">
+        <img
+          src={photo}
+          alt=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          style={{ objectPosition: PHOTO_POS, filter: PHOTO_FILTER }}
+          draggable="false"
+        />
+        <div className="absolute inset-0 -z-10 bg-black/35" aria-hidden="true" />
         <Suspense fallback={null}>
-          <Hero3D />
+          <Hero3D light />
         </Suspense>
 
-        <div className="relative z-10 grid flex-1 gap-8 p-6 pt-10 md:grid-cols-[1.25fr_1fr] md:p-12 md:pt-14">
+        <div className="wrap relative z-10 grid w-full flex-1 gap-8 py-10 md:grid-cols-[1.25fr_1fr] md:py-14">
           <div className="flex flex-col">
             <h1
               key={lang}
@@ -75,7 +85,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative z-10 p-3 pt-0 md:p-5 md:pt-0">
+        <div className="wrap relative z-10 w-full pb-4 md:pb-6">
           <dl
             className="band-glass grid divide-x divide-white/15 rounded-2xl"
             style={{ gridTemplateColumns: `repeat(${h.stats.length}, minmax(0, 1fr))` }}

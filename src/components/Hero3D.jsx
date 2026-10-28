@@ -28,7 +28,7 @@ function glyphTexture(text) {
   return tex;
 }
 
-export default function Hero3D() {
+export default function Hero3D({ light = false }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -148,6 +148,14 @@ export default function Hero3D() {
     );
     rig.add(dust);
 
+    // Light mode: only the floating tech words and the dust stay.
+    if (light) {
+      core.visible = false;
+      inner.visible = false;
+      shell.visible = false;
+      rings.forEach((r) => (r.g.visible = false));
+    }
+
     // Tap pulse.
     const pulseMat = flat(0);
     const pulse = new THREE.Mesh(keep(new THREE.RingGeometry(1, 1.02, 120)), pulseMat);
@@ -256,7 +264,7 @@ export default function Hero3D() {
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       layout();
-      cubes.forEach((c, i) => (c.m.visible = w / h > 1.15 || i < 5));
+      cubes.forEach((c, i) => (c.m.visible = !light && (w / h > 1.15 || i < 5)));
       render(performance.now());
     };
 
@@ -305,7 +313,7 @@ export default function Hero3D() {
       for (const g of glyphs) g.s.material.map?.dispose?.();
       renderer.dispose();
     };
-  }, []);
+  }, [light]);
 
   return <canvas ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
 }
