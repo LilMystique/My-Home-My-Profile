@@ -11,10 +11,10 @@ const COOLDOWN_MS = 60000;
 function Pattern() {
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 select-none overflow-hidden" aria-hidden="true">
-      {["-4%", "-14%", "2%"].map((x, i) => (
+      {["-4%", "-14%"].map((x, i) => (
         <div
           key={i}
-          className="flex items-center gap-[4vw] whitespace-nowrap py-[1.2vw] opacity-[0.035] md:opacity-[0.05]"
+          className="flex items-center gap-[4vw] whitespace-nowrap py-[0.6vw] opacity-[0.035] md:opacity-[0.05]"
           style={{ transform: `translateX(${x})` }}
         >
           {[0, 1, 2, 3].map((n) => (
@@ -184,18 +184,13 @@ export default function Footer() {
           <div className="relative bg-band text-band-fg">
             <Pattern />
 
-            <div className="relative grid gap-10 p-6 md:grid-cols-[1.5fr_1fr_1fr_1fr] md:p-10">
+            <div className="relative grid gap-7 p-5 md:grid-cols-[1.1fr_1.2fr_1fr] md:gap-10 md:p-7">
               <div>
                 <a href="#/" aria-label="Capricon Technologies" className="inline-block">
-                  <Logo tone="dark" className="h-12 md:h-14" />
+                  <Logo tone="dark" className="h-10 md:h-11" />
                 </a>
-                <p className="mt-3 max-w-xs text-sm text-band-mute">{tr(f.tagline)}</p>
-
-                <p className={`${heading} mt-7`}>{tr(f.callTitle)}</p>
-                <p className="mt-1 text-sm text-band-mute">{tr(f.callText)}</p>
-                <CallbackForm />
-
-                <ul className="mt-6 flex gap-2.5">
+                <p className="mt-2 max-w-xs text-sm text-band-mute">{tr(f.tagline)}</p>
+                <ul className="mt-4 flex gap-2.5">
                   {CONTACT.social.map((s) => (
                     <li key={s.label}>
                       <a
@@ -203,7 +198,7 @@ export default function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-band-fg text-band hover:opacity-80"
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-band-fg text-band hover:opacity-80"
                       >
                         <SocialIcon label={s.label} />
                       </a>
@@ -212,49 +207,49 @@ export default function Footer() {
                 </ul>
               </div>
 
-              <div className="grid grid-cols-2 gap-8 md:contents">
-                <nav aria-label={tr(f.links)}>
-                  <p className={heading}>{tr(f.links)}</p>
-                  <ul className="mt-4 space-y-2.5">
-                    {quick.map(([id, label]) => (
-                      <li key={id}>
-                        <a href={`#${id}`} className={link}>
-                          {tr(label)}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-
-                <nav aria-label={tr(f.ourWork)}>
-                  <p className={heading}>{tr(f.ourWork)}</p>
-                  <ul className="mt-4 space-y-2.5">
-                    {PROJECTS.map((p) => (
-                      <li key={p.slug}>
-                        <a href={`#/work/${p.slug}`} className={link}>
-                          {p.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
+              <div>
+                <p className={heading}>{tr(f.callTitle)}</p>
+                <p className="mt-1 text-sm text-band-mute">{tr(f.callText)}</p>
+                <CallbackForm />
               </div>
 
               <div>
                 <p className={heading}>{tr(f.contact)}</p>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-2 space-y-1.5">
                   <li>
                     <a href={waLink(UI.contact.waGreeting.en + UI.contact.waDefault.en)} target="_blank" rel="noopener noreferrer" className={link}>
                       {tr(UI.contact.whatsapp)}
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`mailto:${CONTACT.email}`} className={link}>
+                      {CONTACT.email}
                     </a>
                   </li>
                   <li className="text-sm text-band-mute">{tr(CONTACT.location)}</li>
                 </ul>
               </div>
             </div>
+
+            <nav
+              aria-label={tr(f.links)}
+              className="relative flex flex-wrap gap-x-5 gap-y-2 border-t border-band-line px-5 py-3.5 md:px-7"
+            >
+              {quick.map(([id, label]) => (
+                <a key={id} href={`#${id}`} className={link}>
+                  {tr(label)}
+                </a>
+              ))}
+              <span className="hidden text-band-mute md:inline" aria-hidden="true">|</span>
+              {PROJECTS.map((p) => (
+                <a key={p.slug} href={`#/work/${p.slug}`} className={link}>
+                  {p.name}
+                </a>
+              ))}
+            </nav>
           </div>
 
-          <div className="flex flex-col gap-3 bg-band-fg px-6 py-4 text-band md:flex-row md:items-center md:justify-between md:px-10">
+          <div className="flex flex-col gap-3 bg-band-fg px-5 py-3 text-band md:flex-row md:items-center md:justify-between md:px-7">
             <p className="text-xs leading-relaxed text-band/70">
               <span className="num">&copy; {new Date().getFullYear()}</span> {CONTACT.company}. {tr(f.rights)}
             </p>

@@ -2,15 +2,11 @@
 
 export const CONTACT = {
   company: "Capricon Technologies, Tanzania",
-  whatsapp: "255700000000", // PLACEHOLDER: international format, no plus sign
+  whatsapp: "255734390606", // international format, no plus sign; used only for chat links
+  email: "capriconempire@gmail.com",
   location: { en: "Tanzania", sw: "Tanzania" }, // PLACEHOLDER: add office city
   bookingUrl: "", // optional: Calendly or Google Calendar link; hidden when empty
-  social: [
-    // PLACEHOLDER: add real links, remove what you do not use
-    { label: "X", href: "https://x.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
-    { label: "Instagram", href: "https://instagram.com/" },
-  ],
+  social: [{ label: "Instagram", href: "https://www.instagram.com/capriconmarketing_/" }],
 };
 
 // 1 USD in TZS. PLACEHOLDER rate used only by the TZS/USD price toggle.
@@ -93,6 +89,7 @@ export const UI = {
     },
     view: { en: "View case study", sw: "Soma kisa kamili" },
     building: { en: "Currently building", sw: "Tunayojenga sasa" },
+    clients: { en: "Companies we have worked with", sw: "Kampuni tulizofanya nazo kazi" },
     shotNote: { en: "Screenshot to add", sw: "Picha itaongezwa" },
     prev: { en: "Previous", sw: "Iliyotangulia" },
     next: { en: "Next", sw: "Inayofuata" },
@@ -328,27 +325,6 @@ export const PROJECTS = [
     image: "",
   },
   {
-    slug: "yicc",
-    name: "Yetu Import Command Center",
-    category: "systems",
-    status: { en: "Client system", sw: "Mfumo wa mteja" },
-    line: {
-      en: "Import operations platform built for Yetu Motors.",
-      sw: "Jukwaa la shughuli za uagizaji lililojengwa kwa Yetu Motors.",
-    },
-    problem: {
-      en: "Yetu Motors needed one place to follow every vehicle through sourcing, shipping, clearing and handover.",
-      sw: "Yetu Motors walihitaji sehemu moja ya kufuatilia kila gari kuanzia kutafuta, kusafirisha, kuondoa bandarini hadi kukabidhi.",
-    },
-    built: {
-      en: "A command center for the import team, with a status for every vehicle and the costs behind it.",
-      sw: "Kituo cha kuongoza timu ya uagizaji, chenye hali ya kila gari na gharama zake.",
-    },
-    result: null,
-    stack: ["React", "Supabase", "Tailwind"],
-    image: "",
-  },
-  {
     slug: "manna-pos",
     name: "Manna POS",
     category: "saas",
@@ -453,27 +429,12 @@ export const PROJECTS = [
     stack: ["Website", "Enquiry form"],
     image: "/work/vera.webp",
   },
-  {
-    slug: "sunlight-abglobal",
-    name: "Sunlight and AB Global",
-    category: "websites",
-    status: { en: "In build", sw: "Inajengwa" },
-    line: {
-      en: "Two websites for a clearing and forwarding company and a trade company.",
-      sw: "Tovuti mbili za kampuni ya kuondoa na kusafirisha mizigo na kampuni ya biashara.",
-    },
-    problem: {
-      en: "Both companies needed a credible web presence that turns enquiries into real shipment and trade leads.",
-      sw: "Kampuni zote mbili zilihitaji uwepo wa kuaminika mtandaoni unaogeuza maulizo kuwa wateja halisi wa mizigo na biashara.",
-    },
-    built: {
-      en: "Two separate sites, one for Sunlight Clearing and Forwarding Ltd and one for AB Global Ltd, each with its own identity.",
-      sw: "Tovuti mbili tofauti, moja ya Sunlight Clearing and Forwarding Ltd na nyingine ya AB Global Ltd, kila moja na utambulisho wake.",
-    },
-    result: null,
-    stack: ["React", "Tailwind"],
-    image: "",
-  },
+];
+
+// Companies we have worked with. Add logo: "/clients/<file>.svg" (or .webp) once you have it;
+// until then the name is shown as a clean wordmark.
+export const CLIENTS = [
+  { name: "Vera International Travel", logo: "" },
 ];
 
 // Shown as a small strip so we do not overclaim.

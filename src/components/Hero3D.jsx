@@ -5,7 +5,7 @@ import * as THREE from "three";
 // rings with nodes running along them, loose cubes, floating code glyphs and a field of dust.
 // Black and white only. It leans toward the pointer, pulses on tap or click, pauses when it is
 // off screen and draws a single still frame for people who prefer reduced motion.
-const GLYPHS = ["</>", "{ }", "01", "API", "SQL", "git", "POS", "=>"];
+const GLYPHS = ["JavaScript", "React", "Next.js", "SQL", "HTML", "CSS", "Tailwind", "Supabase", "Vite", "API", "</>"];
 
 function glyphTexture(text) {
   const c = document.createElement("canvas");
@@ -13,7 +13,13 @@ function glyphTexture(text) {
   c.height = 128;
   const g = c.getContext("2d");
   g.fillStyle = "#fff";
-  g.font = "600 72px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+  let size = 72;
+  const face = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+  g.font = `600 ${size}px ${face}`;
+  while (g.measureText(text).width > 236 && size > 28) {
+    size -= 4;
+    g.font = `600 ${size}px ${face}`;
+  }
   g.textAlign = "center";
   g.textBaseline = "middle";
   g.fillText(text, 128, 66);
@@ -118,7 +124,7 @@ export default function Hero3D() {
       const tex = keep(glyphTexture(text));
       const mat = keep(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.6, depthWrite: false }));
       const s = new THREE.Sprite(mat);
-      s.scale.set(1.1, 0.55, 1);
+      s.scale.set(1.25, 0.62, 1);
       rig.add(s);
       return { s, a: (i / GLYPHS.length) * Math.PI * 2, R: 3.3 + (i % 3) * 0.55, f: i * 1.3 };
     });

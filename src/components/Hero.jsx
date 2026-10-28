@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="flex flex-col">
             <h1
               key={lang}
-              className="text-[clamp(3.4rem,13vw,8.6rem)] font-extrabold uppercase leading-[0.86] tracking-tight"
+              className="text-[clamp(4.2rem,22vw,6.5rem)] font-extrabold md:text-[clamp(3.4rem,13vw,8.6rem)] uppercase leading-[0.86] tracking-tight"
             >
               {h.words[lang].map((w, i) => (
                 <span key={w} className="block">
