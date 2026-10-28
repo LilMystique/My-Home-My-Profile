@@ -17,7 +17,8 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 // where "#work", "#contact" and so on are plain in-page anchors.
 function parse() {
   const m = window.location.hash.match(/^#\/work\/([\w-]+)/);
-  return m ? { page: "case", slug: m[1] } : { page: "home" };
+  if (m) return { page: "case", slug: m[1] };
+  return /^#\/process/.test(window.location.hash) ? { page: "process" } : { page: "home" };
 }
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
       requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
       return;
     }
-    if (route.page === "case") {
+    if (route.page === "case" || route.page === "process") {
       window.scrollTo(0, 0);
       return;
     }
@@ -63,13 +64,16 @@ export default function App() {
       <Nav />
       {route.page === "case" ? (
         <CaseStudy project={project} onInquire={inquire} />
+      ) : route.page === "process" ? (
+        <main>
+          <Process page />
+        </main>
       ) : (
         <main>
           <Hero />
           <Marquee />
           <Work />
           <Services />
-          <Process />
           <Team />
           <Engage />
         </main>

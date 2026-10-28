@@ -7,7 +7,7 @@ const COOLDOWN_MS = 60000;
 const CATEGORY_TO_NEED = { systems: "systems", saas: "saas", websites: "website" };
 
 const field =
-  "mt-2 w-full rounded-2xl border border-band-line bg-white/5 px-4 py-3.5 text-band-fg placeholder:text-band-mute focus:border-band-fg";
+  "mt-1.5 w-full rounded-xl border border-band-line bg-white/5 px-3.5 py-2.5 text-band-fg placeholder:text-band-mute focus:border-band-fg";
 
 export default function Contact({ intent }) {
   const { lang, tr } = useLang();
@@ -94,11 +94,11 @@ export default function Contact({ intent }) {
       <div className="orb orb-light -left-24 -top-24 h-80 w-80" aria-hidden="true" />
       <div className="orb orb-light -bottom-32 right-0 h-72 w-72" aria-hidden="true" />
 
-      <div className="wrap relative grid gap-12 py-16 md:grid-cols-2 md:py-24">
+      <div className="wrap relative grid gap-8 py-10 md:grid-cols-2 md:gap-12 md:py-14">
         <div>
-          <h2 className="text-[clamp(3rem,9vw,6.5rem)] font-semibold leading-none tracking-tight">{tr(c.title)}</h2>
-          <p className="mt-6 max-w-md text-lg text-band-mute">{tr(c.sub)}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <h2 className="text-[clamp(2.75rem,7vw,5rem)] font-semibold leading-none tracking-tight">{tr(c.title)}</h2>
+          <p className="mt-4 max-w-md text-lg text-band-mute">{tr(c.sub)}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
             <a
               href={waLink(waText)}
               target="_blank"
@@ -125,35 +125,37 @@ export default function Contact({ intent }) {
             <p className="text-xl font-medium leading-snug">{tr(c.thanks)}</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="band-glass space-y-5 rounded-3xl p-6 md:p-8">
+          <form onSubmit={onSubmit} noValidate className="band-glass space-y-3.5 rounded-3xl p-5 md:p-6">
+            <div className="grid gap-3.5 sm:grid-cols-2">
             <label className="block text-sm font-medium">
-              {tr(c.name)}
-              <input
-                className={field}
-                value={form.name}
-                onChange={set("name")}
-                autoComplete="name"
-                aria-invalid={Boolean(errors.name)}
-              />
-              {errors.name && <span className="mt-1 block text-sm font-medium">{tr(c.required)}</span>}
-            </label>
+                {tr(c.name)}
+                <input
+                  className={field}
+                  value={form.name}
+                  onChange={set("name")}
+                  autoComplete="name"
+                  aria-invalid={Boolean(errors.name)}
+                />
+                {errors.name && <span className="mt-1 block text-sm font-medium">{tr(c.required)}</span>}
+              </label>
 
-            <label className="block text-sm font-medium">
-              {tr(c.phone)}
-              <input
-                className={field}
-                value={form.phone}
-                onChange={set("phone")}
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
-                placeholder="+255 7xx xxx xxx"
-                aria-invalid={Boolean(errors.phone)}
-              />
-              {errors.phone && <span className="mt-1 block text-sm font-medium">{tr(c.badPhone)}</span>}
-            </label>
+              <label className="block text-sm font-medium">
+                {tr(c.phone)}
+                <input
+                  className={field}
+                  value={form.phone}
+                  onChange={set("phone")}
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  placeholder="+255 7xx xxx xxx"
+                  aria-invalid={Boolean(errors.phone)}
+                />
+                {errors.phone && <span className="mt-1 block text-sm font-medium">{tr(c.badPhone)}</span>}
+              </label>
+            </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-3.5 sm:grid-cols-2">
               <label className="block text-sm font-medium">
                 {tr(c.need)}
                 <select className={field} value={form.need} onChange={set("need")}>
@@ -180,7 +182,7 @@ export default function Contact({ intent }) {
 
             <label className="block text-sm font-medium">
               {tr(c.message)}
-              <textarea className={field} rows={3} value={form.message} onChange={set("message")} />
+              <textarea className={field} rows={2} value={form.message} onChange={set("message")} />
             </label>
 
             {/* Honeypot: hidden from people, filled by bots */}
@@ -194,7 +196,7 @@ export default function Contact({ intent }) {
             <button
               type="submit"
               disabled={state === "sending"}
-              className="cursor-pointer rounded-full bg-band-fg px-8 py-3.5 font-medium text-band hover:opacity-80 disabled:opacity-60"
+              className="cursor-pointer rounded-full bg-band-fg px-7 py-2.5 font-medium text-band hover:opacity-80 disabled:opacity-60"
             >
               {tr(state === "sending" ? c.sending : c.send)}
             </button>

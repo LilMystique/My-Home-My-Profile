@@ -18,7 +18,7 @@ export const UI = {
     services: { en: "Services", sw: "Huduma" },
     process: { en: "Process", sw: "Mchakato" },
     team: { en: "Team", sw: "Timu" },
-    engage: { en: "Working with us", sw: "Kufanya kazi nasi" },
+    engage: { en: "Work with us", sw: "Fanya kazi nasi" },
     cta: { en: "Start a project", sw: "Anza mradi" },
     menu: { en: "Menu", sw: "Menyu" },
     close: { en: "Close", sw: "Funga" },
@@ -72,11 +72,10 @@ export const UI = {
     stats: [
       { v: "6", l: { en: "Products and systems", sw: "Bidhaa na mifumo" } },
       { v: "4", l: { en: "Core services", sw: "Huduma kuu" } },
-      { v: "2", l: { en: "Languages", sw: "Lugha" } },
     ],
   },
   work: {
-    title: { en: "Selected work", sw: "Kazi tulizochagua" },
+    title: { en: "Work Done", sw: "Kazi Zilizofanyika" },
     sub: {
       en: "Systems and products we have built for Tanzanian businesses.",
       sw: "Mifumo na bidhaa tulizojenga kwa biashara za Tanzania.",
@@ -88,6 +87,7 @@ export const UI = {
       websites: { en: "Websites", sw: "Tovuti" },
     },
     view: { en: "View case study", sw: "Soma kisa kamili" },
+    visit: { en: "Visit site", sw: "Tembelea tovuti" },
     building: { en: "Currently building", sw: "Tunayojenga sasa" },
     clients: { en: "Companies we have worked with", sw: "Kampuni tulizofanya nazo kazi" },
     shotNote: { en: "Screenshot to add", sw: "Picha itaongezwa" },
@@ -191,7 +191,7 @@ export const UI = {
     ],
   },
   team: {
-    title: { en: "The people behind the work", sw: "Watu walio nyuma ya kazi" },
+    title: { en: "The team", sw: "Timu" },
     sub: {
       en: "A small team that builds, ships and stays on the call after launch.",
       sw: "Timu ndogo inayojenga, kuzindua na kubaki nawe baada ya uzinduzi.",
@@ -199,11 +199,13 @@ export const UI = {
     placeholder: { en: "Placeholder", sw: "Mfano" },
   },
   engage: {
-    title: { en: "Working with us", sw: "Kufanya kazi nasi" },
+    title: { en: "Work with us", sw: "Fanya kazi nasi" },
     sub: {
-      en: "Three simple ways to start. Final prices depend on scope.",
-      sw: "Njia tatu rahisi za kuanza. Bei ya mwisho inategemea ukubwa wa kazi.",
+      en: "Three simple ways to start. Pricing is shared after you send an inquiry, based on your project.",
+      sw: "Njia tatu rahisi za kuanza. Bei hutolewa baada ya kutuma ombi, kulingana na mradi wako.",
     },
+    priceNote: { en: "Price shared after your inquiry", sw: "Bei hutolewa baada ya ombi lako" },
+    inquire: { en: "Send an inquiry", sw: "Tuma ombi" },
     from: { en: "From", sw: "Kuanzia" },
     perMonth: { en: "per month", sw: "kwa mwezi" },
     discuss: { en: "Let's discuss", sw: "Tuzungumze" },
@@ -344,6 +346,7 @@ export const PROJECTS = [
     result: null,
     stack: ["Vite", "React", "Supabase", "PWA"],
     image: "",
+    url: "https://luce-pos.vercel.app",
   },
   {
     slug: "tiketi",
@@ -365,6 +368,7 @@ export const PROJECTS = [
     result: null,
     stack: ["React", "Supabase", "Tailwind"],
     image: "",
+    url: "https://tiketi-app-two.vercel.app",
   },
   {
     slug: "wifi-kitonga",
@@ -386,6 +390,7 @@ export const PROJECTS = [
     result: null,
     stack: ["React", "Supabase", "Mobile money"],
     image: "/work/wifi-kitonga.webp",
+    url: "https://wifikitongacapricon.netlify.app",
   },
   {
     slug: "volta",
@@ -407,6 +412,7 @@ export const PROJECTS = [
     result: null,
     stack: ["Next.js", "Supabase", "Tailwind"],
     image: "/work/volta.webp",
+    url: "https://volta-final.vercel.app",
   },
   {
     slug: "vera",
@@ -428,6 +434,7 @@ export const PROJECTS = [
     result: null,
     stack: ["Website", "Enquiry form"],
     image: "/work/vera.webp",
+    url: "https://vera4l.vercel.app",
   },
 ];
 

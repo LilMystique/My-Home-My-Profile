@@ -34,6 +34,16 @@ export default function CaseStudy({ project, onInquire }) {
           {project.name}
         </h1>
         <p className="mt-4 max-w-2xl text-xl text-mute">{tr(project.line)}</p>
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block rounded-full bg-ink px-6 py-3 font-medium text-paper hover:opacity-80"
+          >
+            {tr(UI.work.visit)} &#8599;
+          </a>
+        )}
 
         <dl className="mt-10 grid gap-3 sm:grid-cols-3">
           {meta.map(([label, value], i) => (

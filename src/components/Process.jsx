@@ -1,12 +1,17 @@
 import { useLang } from "../lib/i18n.jsx";
 import { UI } from "../data/content.js";
 
-export default function Process() {
+export default function Process({ page }) {
   const { tr } = useLang();
   const p = UI.process;
 
   return (
-    <section id="process" className="wrap py-14 md:py-20">
+    <section id="process" className="wrap py-10 md:py-16">
+      {page && (
+        <a href="#/" className="mb-6 inline-block text-sm font-medium text-mute hover:text-ink">
+          &larr; {tr(UI.case.back)}
+        </a>
+      )}
       <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(p.title)}</h2>
       <ol className="mt-7 grid grid-cols-2 gap-2.5 lg:grid-cols-4">
         {p.steps.map((s, i) => (

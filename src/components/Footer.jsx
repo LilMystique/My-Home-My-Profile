@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useLang } from "../lib/i18n.jsx";
-import { CONTACT, FOOTER_PAYMENTS, PROJECTS, UI, waLink } from "../data/content.js";
+import { CONTACT, UI, waLink } from "../data/content.js";
 import { hasBackend, isPhone, normalizePhone, submitLead } from "../lib/leads.js";
 import Logo from "./Logo.jsx";
 import darkLogo from "../assets/logo-dark.png";
@@ -168,14 +168,6 @@ export default function Footer() {
   const { tr } = useLang();
   const f = UI.footer;
 
-  const quick = [
-    ["work", UI.nav.work],
-    ["services", UI.nav.services],
-    ["process", UI.nav.process],
-    ["team", UI.nav.team],
-    ["engage", UI.nav.engage],
-    ["contact", UI.nav.cta],
-  ];
 
   return (
     <footer className="bg-paper pb-24 pt-6 md:pb-6">
@@ -230,37 +222,12 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-
-            <nav
-              aria-label={tr(f.links)}
-              className="relative flex flex-wrap gap-x-5 gap-y-2 border-t border-band-line px-5 py-3.5 md:px-7"
-            >
-              {quick.map(([id, label]) => (
-                <a key={id} href={`#${id}`} className={link}>
-                  {tr(label)}
-                </a>
-              ))}
-              <span className="hidden text-band-mute md:inline" aria-hidden="true">|</span>
-              {PROJECTS.map((p) => (
-                <a key={p.slug} href={`#/work/${p.slug}`} className={link}>
-                  {p.name}
-                </a>
-              ))}
-            </nav>
           </div>
 
-          <div className="flex flex-col gap-3 bg-band-fg px-5 py-3 text-band md:flex-row md:items-center md:justify-between md:px-7">
+          <div className="flex flex-col gap-3 bg-band-fg px-5 py-3 text-band ">
             <p className="text-xs leading-relaxed text-band/70">
               <span className="num">&copy; {new Date().getFullYear()}</span> {CONTACT.company}. {tr(f.rights)}
             </p>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-xs text-band/70">{tr(f.payLabel)}</span>
-              {FOOTER_PAYMENTS.map((p, i) => (
-                <span key={i} className="rounded-full border border-band/20 px-3 py-1 text-xs font-medium">
-                  {tr(p)}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>

@@ -46,8 +46,10 @@ export default function Work() {
         <Rail label={tr(UI.work.title)} resetKey={filter}>
           {list.map((p) => (
             <li key={p.slug} className="w-[76vw] max-w-[19rem] shrink-0 snap-start sm:w-[20rem] sm:max-w-none">
-              <a href={`#/work/${p.slug}`} className="tile group flex h-full flex-col p-2.5 hover:bg-ink/10">
-                <Shot project={p} />
+              <div className="tile group relative flex h-full flex-col p-2.5 hover:bg-ink/10">
+                <a href={`#/work/${p.slug}`} aria-label={p.name}>
+                  <Shot project={p} />
+                </a>
                 <div className="flex flex-1 flex-col px-2 pb-1.5 pt-3">
                   <div className="flex items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-widest text-mute">
                     <span>{tr(UI.work.filters[p.category])}</span>
@@ -55,11 +57,23 @@ export default function Work() {
                   </div>
                   <h3 className="mt-1.5 text-lg font-semibold tracking-tight">{p.name}</h3>
                   <p className="mt-1 line-clamp-2 text-sm text-mute">{tr(p.line)}</p>
-                  <span className="mt-auto inline-block self-start border-b border-ink pb-0.5 pt-3 text-sm font-medium">
-                    {tr(UI.work.view)}
-                  </span>
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-3">
+                    <a href={`#/work/${p.slug}`} className="border-b border-ink pb-0.5 text-sm font-medium">
+                      {tr(UI.work.view)}
+                    </a>
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full bg-ink px-3.5 py-1.5 text-sm font-medium text-paper hover:opacity-80"
+                      >
+                        {tr(UI.work.visit)} &#8599;
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </a>
+              </div>
             </li>
           ))}
         </Rail>

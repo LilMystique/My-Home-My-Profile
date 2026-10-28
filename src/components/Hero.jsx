@@ -76,7 +76,10 @@ export default function Hero() {
         </div>
 
         <div className="relative z-10 p-3 pt-0 md:p-5 md:pt-0">
-          <dl className="band-glass grid grid-cols-3 divide-x divide-white/15 rounded-2xl">
+          <dl
+            className="band-glass grid divide-x divide-white/15 rounded-2xl"
+            style={{ gridTemplateColumns: `repeat(${h.stats.length}, minmax(0, 1fr))` }}
+          >
             {h.stats.map((s, i) => (
               <div key={i} className="flex flex-col gap-1 px-3 py-3 md:flex-row md:items-baseline md:justify-center md:gap-3 md:px-5">
                 <dt className="text-xs leading-tight text-white/70 md:text-sm">{tr(s.l)}</dt>
