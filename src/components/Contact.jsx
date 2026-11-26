@@ -7,7 +7,7 @@ const COOLDOWN_MS = 60000;
 const CATEGORY_TO_NEED = { systems: "systems", saas: "saas", websites: "website" };
 
 const field =
-  "mt-1.5 w-full rounded-none border border-band-line bg-white/5 px-3.5 py-2.5 text-band-fg placeholder:text-band-mute focus:border-band-fg";
+  "mt-1.5 w-full rounded-xl border border-band-line bg-white/5 px-3.5 py-2.5 text-band-fg placeholder:text-band-mute focus:border-band-fg";
 
 export default function Contact({ intent }) {
   const { lang, tr } = useLang();
@@ -103,7 +103,7 @@ export default function Contact({ intent }) {
               href={waLink(waText)}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-none bg-band-fg px-7 py-3.5 font-medium text-band hover:opacity-80"
+              className="rounded-full bg-band-fg px-7 py-3.5 font-medium text-band hover:opacity-80"
             >
               {tr(c.whatsapp)}
             </a>
@@ -112,7 +112,7 @@ export default function Contact({ intent }) {
                 href={CONTACT.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-none border border-band-line px-7 py-3.5 font-medium hover:bg-white/10"
+                className="rounded-full border border-band-line px-7 py-3.5 font-medium hover:bg-white/10"
               >
                 {tr(c.book)}
               </a>
@@ -121,11 +121,11 @@ export default function Contact({ intent }) {
         </div>
 
         {state === "done" ? (
-          <div className="band-glass self-start rounded-none p-8" role="status">
+          <div className="band-glass self-start rounded-3xl p-8" role="status">
             <p className="text-xl font-medium leading-snug">{tr(c.thanks)}</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="band-glass space-y-3.5 rounded-none p-5 md:p-6">
+          <form onSubmit={onSubmit} noValidate className="band-glass space-y-3.5 rounded-3xl p-5 md:p-6">
             <div className="grid gap-3.5 sm:grid-cols-2">
             <label className="block text-sm font-medium">
                 {tr(c.name)}
@@ -196,7 +196,7 @@ export default function Contact({ intent }) {
             <button
               type="submit"
               disabled={state === "sending"}
-              className="cursor-pointer rounded-none bg-band-fg px-7 py-2.5 font-medium text-band hover:opacity-80 disabled:opacity-60"
+              className="cursor-pointer rounded-full bg-band-fg px-7 py-2.5 font-medium text-band hover:opacity-80 disabled:opacity-60"
             >
               {tr(state === "sending" ? c.sending : c.send)}
             </button>

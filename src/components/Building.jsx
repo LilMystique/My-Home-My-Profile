@@ -14,7 +14,7 @@ function Row({ items, reverse, seconds, minChips }) {
         <li
           key={i}
           data-dup={i >= items.length ? "" : undefined}
-          className="flex items-baseline gap-2 whitespace-nowrap rounded-none border border-line bg-ink/5 px-4 py-2.5"
+          className="flex items-baseline gap-2 whitespace-nowrap rounded-full border border-line bg-ink/5 px-4 py-2.5"
         >
           <span className="text-sm font-semibold">{b.name}</span>
           <span className="text-sm text-mute">{tr(b.note)}</span>

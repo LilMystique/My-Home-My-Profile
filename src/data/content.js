@@ -69,7 +69,7 @@ export const UI = {
       { en: "WiFi hotspot owners.", sw: "wamiliki wa hotspot za WiFi." },
       { en: "clearing and forwarding firms.", sw: "kampuni za kusafirisha mizigo." },
     ],
-    // Counts match PROJECTS and services.items; update them when those change
+    // PLACEHOLDER numbers: replace with real, checkable figures
     stats: [
       { v: "8", l: { en: "Products and systems", sw: "Bidhaa na mifumo" } },
       { v: "8", l: { en: "Core services", sw: "Huduma kuu" } },

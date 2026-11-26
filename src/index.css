@@ -194,7 +194,7 @@ body::before {
   .tile {
     background: var(--tile);
     border: 1px solid var(--line);
-    border-radius: 0;
+    border-radius: 1.5rem;
   }
 
   /* Grey blur shapes that sit behind glass. */

@@ -48,7 +48,7 @@ export default function Services() {
       </ul>
 
       <div className="mt-6 flex justify-center">
-        <a href="#contact" className="rounded-none bg-ink px-6 py-2.5 font-medium text-paper hover:opacity-80">
+        <a href="#contact" className="rounded-full bg-ink px-6 py-2.5 font-medium text-paper hover:opacity-80">
           {tr(UI.nav.cta)}
         </a>
       </div>

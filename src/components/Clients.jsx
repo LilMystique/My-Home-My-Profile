@@ -18,7 +18,7 @@ export default function Clients({ page }) {
         {CLIENTS.map((c) => (
           <li
             key={c.name}
-            className="flex h-24 items-center justify-center rounded-none border border-line bg-ink/5 px-5 py-4 text-center"
+            className="flex h-24 items-center justify-center rounded-2xl border border-line bg-ink/5 px-5 py-4 text-center"
           >
             {c.logo ? (
               <img src={c.logo} alt={c.name} className="max-h-full max-w-full object-contain grayscale" loading="lazy" />

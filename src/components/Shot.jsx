@@ -13,14 +13,14 @@ export default function Shot({ project, large = false }) {
         alt={project.name}
         loading="lazy"
         decoding="async"
-        className="aspect-[16/10] w-full rounded-none border border-line object-cover object-top"
+        className="aspect-[16/10] w-full rounded-2xl border border-line object-cover object-top"
       />
     );
   }
 
   return (
     <div
-      className={`flex aspect-[16/10] w-full flex-col justify-between rounded-none border border-line bg-ink/5 ${
+      className={`flex aspect-[16/10] w-full flex-col justify-between rounded-2xl border border-line bg-ink/5 ${
         large ? "p-5" : "p-3"
       }`}
     >

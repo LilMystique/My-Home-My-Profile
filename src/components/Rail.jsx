@@ -41,7 +41,7 @@ export default function Rail({ children, label, resetKey, arrows = true, bleed =
   };
 
   const arrow =
-    "flex h-9 w-9 cursor-pointer items-center justify-center rounded-none border border-line-strong hover:bg-ink hover:text-paper disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-inherit";
+    "flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-line-strong hover:bg-ink hover:text-paper disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-inherit";
 
   return (
     <div>
@@ -57,9 +57,9 @@ export default function Rail({ children, label, resetKey, arrows = true, bleed =
 
       {m.scrollable && (
         <div className="mt-4 flex items-center gap-4">
-          <div className="relative h-[3px] flex-1 rounded-none bg-ink/10" aria-hidden="true">
+          <div className="relative h-[3px] flex-1 rounded-full bg-ink/10" aria-hidden="true">
             <div
-              className="absolute top-0 h-full rounded-none bg-ink"
+              className="absolute top-0 h-full rounded-full bg-ink"
               style={{ width: `${m.thumb}%`, left: `${m.left}%` }}
             />
           </div>

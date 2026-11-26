@@ -107,7 +107,7 @@ function CallbackForm() {
 
   if (state === "done") {
     return (
-      <p className="mt-3 rounded-none border border-band-line px-4 py-3 text-sm font-medium" role="status">
+      <p className="mt-3 rounded-2xl border border-band-line px-4 py-3 text-sm font-medium" role="status">
         {tr(f.callDone)}
       </p>
     );
@@ -115,7 +115,7 @@ function CallbackForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative mt-3 max-w-sm">
-      <div className="flex rounded-none bg-band-fg p-1">
+      <div className="flex rounded-full bg-band-fg p-1">
         <input
           id="footer-phone"
           type="tel"
@@ -131,7 +131,7 @@ function CallbackForm() {
         <button
           type="submit"
           disabled={state === "sending"}
-          className="shrink-0 cursor-pointer rounded-none bg-band px-5 py-2.5 text-sm font-medium text-band-fg hover:opacity-80 disabled:opacity-60"
+          className="shrink-0 cursor-pointer rounded-full bg-band px-5 py-2.5 text-sm font-medium text-band-fg hover:opacity-80 disabled:opacity-60"
         >
           {tr(state === "sending" ? f.callSending : f.callBtn)}
         </button>
@@ -172,7 +172,7 @@ export default function Footer() {
   return (
     <footer className="bg-paper pb-24 pt-6 md:pb-6">
       <div className="wrap">
-        <div className="overflow-hidden rounded-none border border-line-strong">
+        <div className="overflow-hidden rounded-[2rem] border border-line-strong">
           <div className="relative bg-band text-band-fg">
             <Pattern />
 
@@ -190,7 +190,7 @@ export default function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className="flex h-9 w-9 items-center justify-center rounded-none bg-band-fg text-band hover:opacity-80"
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-band-fg text-band hover:opacity-80"
                       >
                         <SocialIcon label={s.label} />
                       </a>
