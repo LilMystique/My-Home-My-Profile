@@ -63,15 +63,15 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col justify-end md:items-start md:pb-2 md:pl-6">
-            <div className="band-glass rounded-3xl bg-black/50 p-5 md:max-w-md md:p-6">
+            <div className="band-glass rounded-none bg-black/50 p-5 md:max-w-md md:p-6">
               <p className="text-base leading-relaxed text-white md:text-[1.05rem]">{tr(h.lead)}</p>
               <div className="mt-5 flex flex-wrap items-center gap-5">
                 <a
                   href="#contact"
-                  className="group flex items-center gap-3 rounded-full bg-white py-1.5 pl-6 pr-1.5 text-sm font-semibold text-black hover:opacity-90"
+                  className="group flex items-center gap-3 rounded-none bg-white py-1.5 pl-6 pr-1.5 text-sm font-semibold text-black hover:opacity-90"
                 >
                   {tr(h.primary)}
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-none bg-black text-white">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M4 12L12 4M5.5 4H12v6.5" />
                     </svg>
@@ -87,7 +87,7 @@ export default function Hero() {
 
         <div className="wrap relative z-10 w-full pb-4 md:pb-6">
           <dl
-            className="band-glass grid divide-x divide-white/15 rounded-2xl"
+            className="band-glass grid divide-x divide-white/15 rounded-none"
             style={{ gridTemplateColumns: `repeat(${h.stats.length}, minmax(0, 1fr))` }}
           >
             {h.stats.map((s, i) => (

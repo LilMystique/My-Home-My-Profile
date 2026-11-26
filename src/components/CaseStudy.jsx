@@ -39,7 +39,7 @@ export default function CaseStudy({ project, onInquire }) {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-block rounded-full bg-ink px-6 py-3 font-medium text-paper hover:opacity-80"
+            className="mt-5 inline-block rounded-none bg-ink px-6 py-3 font-medium text-paper hover:opacity-80"
           >
             {tr(UI.work.visit)} &#8599;
           </a>
@@ -82,7 +82,7 @@ export default function CaseStudy({ project, onInquire }) {
           <button
             type="button"
             onClick={() => onInquire(project)}
-            className="cursor-pointer self-start rounded-full bg-band-fg px-7 py-3.5 font-medium text-band hover:opacity-80"
+            className="cursor-pointer self-start rounded-none bg-band-fg px-7 py-3.5 font-medium text-band hover:opacity-80"
           >
             {tr(c.ctaBtn)}
           </button>

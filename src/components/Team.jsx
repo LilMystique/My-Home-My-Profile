@@ -42,10 +42,10 @@ export default function Team({ page }) {
                     alt={m.name}
                     loading="lazy"
                     decoding="async"
-                    className="aspect-square w-full rounded-2xl object-cover grayscale md:aspect-[4/5]"
+                    className="aspect-square w-full rounded-none object-cover grayscale md:aspect-[4/5]"
                   />
                 ) : (
-                  <div className="flex aspect-square w-full items-end rounded-2xl bg-ink/5 p-3 md:aspect-[4/5]">
+                  <div className="flex aspect-square w-full items-end rounded-none bg-ink/5 p-3 md:aspect-[4/5]">
                     <span className="text-4xl font-semibold tracking-tight text-mute">{initials(m.name)}</span>
                   </div>
                 )}

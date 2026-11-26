@@ -23,7 +23,7 @@ export default function Work() {
         <div
           role="group"
           aria-label="Filter"
-          className="no-scrollbar inline-flex max-w-full self-start overflow-x-auto rounded-full border border-line bg-ink/5 p-1"
+          className="no-scrollbar inline-flex max-w-full self-start overflow-x-auto rounded-none border border-line bg-ink/5 p-1"
         >
           {FILTERS.map((f) => (
             <button
@@ -31,7 +31,7 @@ export default function Work() {
               type="button"
               onClick={() => setFilter(f)}
               aria-pressed={filter === f}
-              className={`shrink-0 cursor-pointer whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium ${
+              className={`shrink-0 cursor-pointer whitespace-nowrap rounded-none px-3.5 py-2 text-sm font-medium ${
                 filter === f ? "bg-ink text-paper" : "text-mute hover:text-ink"
               }`}
             >
@@ -45,11 +45,11 @@ export default function Work() {
         <Rail label={tr(UI.work.title)} resetKey={filter}>
           {list.map((p) => (
             <li key={p.slug} className="w-[76vw] max-w-[19rem] shrink-0 snap-start sm:w-[20rem] sm:max-w-none">
-              <div className="tile group relative flex h-full flex-col p-2.5 hover:bg-ink/10">
+              <div className="tile group relative flex h-full flex-col hover:bg-ink/10">
                 <a href={`#/work/${p.slug}`} aria-label={p.name}>
                   <Shot project={p} />
                 </a>
-                <div className="flex flex-1 flex-col px-2 pb-1.5 pt-3">
+                <div className="flex flex-1 flex-col border-t border-line px-4 pb-4 pt-3.5">
                   <div className="flex items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-widest text-mute">
                     <span>{tr(UI.work.filters[p.category])}</span>
                     <span className="text-right">{tr(p.status)}</span>
@@ -65,7 +65,7 @@ export default function Work() {
                         href={p.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-full bg-ink px-3.5 py-1.5 text-sm font-medium text-paper hover:opacity-80"
+                        className="rounded-none bg-ink px-3.5 py-1.5 text-sm font-medium text-paper hover:opacity-80"
                       >
                         {tr(UI.work.visit)} &#8599;
                       </a>

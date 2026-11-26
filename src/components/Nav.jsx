@@ -35,7 +35,7 @@ function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={tr(UI.nav.theme)}
-      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-ink/10"
+      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-none hover:bg-ink/10"
     >
       {dark ? (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
@@ -93,7 +93,7 @@ export default function Nav() {
               onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-label={tr(UI.nav.menu)}
-              className="-ml-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full hover:bg-ink/10"
+              className="-ml-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-none hover:bg-ink/10"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
                 <path d="M4 7h16M4 12h16M4 17h16" />
@@ -110,7 +110,7 @@ export default function Nav() {
             <ThemeToggle />
             <a
               href="#contact"
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-80 md:inline-block"
+              className="hidden rounded-none bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:opacity-80 md:inline-block"
             >
               {tr(UI.nav.cta)}
             </a>
@@ -142,7 +142,7 @@ export default function Nav() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="cursor-pointer rounded-full px-3 py-2 text-sm font-medium hover:bg-ink/10"
+                className="cursor-pointer rounded-none px-3 py-2 text-sm font-medium hover:bg-ink/10"
               >
                 {tr(UI.nav.close)}
               </button>
@@ -161,7 +161,7 @@ export default function Nav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="rounded-full bg-ink px-6 py-3.5 text-center font-medium text-paper hover:opacity-80"
+              className="rounded-none bg-ink px-6 py-3.5 text-center font-medium text-paper hover:opacity-80"
             >
               {tr(UI.nav.cta)}
             </a>
