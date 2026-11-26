@@ -4,7 +4,6 @@ import { PROJECTS, UI } from "../data/content.js";
 import Shot from "./Shot.jsx";
 import Rail from "./Rail.jsx";
 import Building from "./Building.jsx";
-import Clients from "./Clients.jsx";
 
 const FILTERS = ["all", "systems", "saas", "websites"];
 
@@ -80,7 +79,6 @@ export default function Work() {
       </div>
 
       <Building />
-      <Clients />
     </section>
   );
 }

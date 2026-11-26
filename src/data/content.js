@@ -18,6 +18,7 @@ export const UI = {
     services: { en: "Services", sw: "Huduma" },
     process: { en: "Process", sw: "Mchakato" },
     team: { en: "Team", sw: "Timu" },
+    clients: { en: "Clients", sw: "Wateja" },
     engage: { en: "Work with us", sw: "Fanya kazi nasi" },
     cta: { en: "Start a project", sw: "Anza mradi" },
     menu: { en: "Menu", sw: "Menyu" },
@@ -548,7 +549,7 @@ export const BUILDING = [
 export const TEAM = [
   {
     name: "SimonJr",
-    role: { en: "Developer and digital strategist", sw: "Msanidi programu na mkakati wa kidijitali" },
+    role: { en: "Software developer and marketer", sw: "Msanidi programu na mtaalamu wa masoko" },
     line: {
       en: "Builds the products and leads delivery.",
       sw: "Hujenga bidhaa na kuongoza utekelezaji.",

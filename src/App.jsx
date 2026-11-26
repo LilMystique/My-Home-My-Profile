@@ -8,6 +8,7 @@ import CaseStudy from "./components/CaseStudy.jsx";
 import Services from "./components/Services.jsx";
 import Process from "./components/Process.jsx";
 import Team from "./components/Team.jsx";
+import Clients from "./components/Clients.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
@@ -17,7 +18,8 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 function parse() {
   const m = window.location.hash.match(/^#\/work\/([\w-]+)/);
   if (m) return { page: "case", slug: m[1] };
-  return /^#\/process/.test(window.location.hash) ? { page: "process" } : { page: "home" };
+  const sub = window.location.hash.match(/^#\/(process|team|clients)/);
+  return sub ? { page: sub[1] } : { page: "home" };
 }
 
 export default function App() {
@@ -38,7 +40,7 @@ export default function App() {
       requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
       return;
     }
-    if (route.page === "case" || route.page === "process") {
+    if (route.page !== "home") {
       window.scrollTo(0, 0);
       return;
     }
@@ -67,13 +69,20 @@ export default function App() {
         <main>
           <Process page />
         </main>
+      ) : route.page === "team" ? (
+        <main>
+          <Team page />
+        </main>
+      ) : route.page === "clients" ? (
+        <main>
+          <Clients page />
+        </main>
       ) : (
         <main>
           <Hero />
           <Marquee />
           <Work />
           <Services />
-          <Team />
         </main>
       )}
       <Contact intent={intent} />

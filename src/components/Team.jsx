@@ -11,12 +11,17 @@ function initials(name) {
     .toUpperCase();
 }
 
-export default function Team() {
+export default function Team({ page }) {
   const { tr } = useLang();
   const t = UI.team;
 
   return (
     <section id="team" className="wrap py-14 md:py-20">
+      {page && (
+        <a href="#/" className="mb-6 inline-block text-sm font-medium text-mute hover:text-ink">
+          &larr; {tr(UI.case.back)}
+        </a>
+      )}
       <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(t.title)}</h2>
       <p className="mt-3 max-w-xl text-mute">{tr(t.sub)}</p>
 

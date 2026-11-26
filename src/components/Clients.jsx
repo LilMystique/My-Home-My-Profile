@@ -2,14 +2,19 @@ import { useLang } from "../lib/i18n.jsx";
 import { CLIENTS, UI } from "../data/content.js";
 
 // Companies we have worked with. Shows the logo when one is set, otherwise the name as a wordmark.
-export default function Clients() {
+export default function Clients({ page }) {
   const { tr } = useLang();
   if (!CLIENTS.length) return null;
 
   return (
-    <div className="mt-12">
-      <h3 className="text-sm font-medium uppercase tracking-widest text-mute">{tr(UI.work.clients)}</h3>
-      <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <section id="clients" className="wrap py-10 md:py-16">
+      {page && (
+        <a href="#/" className="mb-6 inline-block text-sm font-medium text-mute hover:text-ink">
+          &larr; {tr(UI.case.back)}
+        </a>
+      )}
+      <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(UI.work.clients)}</h2>
+      <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {CLIENTS.map((c) => (
           <li
             key={c.name}
@@ -23,6 +28,6 @@ export default function Clients() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
