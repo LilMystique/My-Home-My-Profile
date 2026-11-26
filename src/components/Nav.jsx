@@ -7,7 +7,6 @@ const LINKS = [
   ["work", UI.nav.work],
   ["services", UI.nav.services],
   ["process", UI.nav.process],
-  ["team", UI.nav.team],
   ["clients", UI.nav.clients],
 ];
 
@@ -152,7 +151,7 @@ export default function Nav() {
             <ul className="mt-8 flex-1">
               {LINKS.map(([id, label]) => (
                 <li key={id} className="border-b border-line">
-                  <a href={["process", "team", "clients"].includes(id) ? `#/${id}` : `#${id}`} onClick={() => setOpen(false)} className="block py-4 text-2xl font-semibold tracking-tight">
+                  <a href={["process", "clients"].includes(id) ? `#/${id}` : `#${id}`} onClick={() => setOpen(false)} className="block py-4 text-2xl font-semibold tracking-tight">
                     {tr(label)}
                   </a>
                 </li>

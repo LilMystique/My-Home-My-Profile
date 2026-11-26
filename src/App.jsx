@@ -7,7 +7,6 @@ import Work from "./components/Work.jsx";
 import CaseStudy from "./components/CaseStudy.jsx";
 import Services from "./components/Services.jsx";
 import Process from "./components/Process.jsx";
-import Team from "./components/Team.jsx";
 import Clients from "./components/Clients.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -18,7 +17,7 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 function parse() {
   const m = window.location.hash.match(/^#\/work\/([\w-]+)/);
   if (m) return { page: "case", slug: m[1] };
-  const sub = window.location.hash.match(/^#\/(process|team|clients)/);
+  const sub = window.location.hash.match(/^#\/(process|clients)/);
   return sub ? { page: sub[1] } : { page: "home" };
 }
 
@@ -68,10 +67,6 @@ export default function App() {
       ) : route.page === "process" ? (
         <main>
           <Process page />
-        </main>
-      ) : route.page === "team" ? (
-        <main>
-          <Team page />
         </main>
       ) : route.page === "clients" ? (
         <main>
