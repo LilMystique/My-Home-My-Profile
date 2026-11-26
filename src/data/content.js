@@ -26,9 +26,194 @@ export const UI = {
   },
   marquee: [
     { en: "Business systems", sw: "Mifumo ya biashara" },
-    { en: "SaaS products", sw: "Bidhaa za SaaS" },
-    { en: "Websites and e-commerce", sw: "Tovuti na biashara mtandaoni" },
-    { en: "Digital strategy", sw: "Mkakati wa kidijitali" },
+    { en: "Mobile apps", sw: "Programu za simu" },
+    { en: "E-commerce", sw: "Biashara mtandaoni" },
+    { en: "Mobile money payments", sw: "Malipo ya simu" },
+    { en: "Built in Tanzania", sw: "Imejengwa Tanzania" },
+    { en: "Mobile money ready", sw: "Tayari kwa malipo ya simu" },
+    { en: "Swahili and English", sw: "Kiswahili na Kiingereza" },
+  ],
+  hero: {
+    eyebrow: { en: "Capricon Technologies, Tanzania", sw: "Capricon Technologies, Tanzania" },
+    title: {
+      en: "Software built in Tanzania, for how Tanzania actually does business.",
+      sw: "Programu zilizojengwa Tanzania, kwa jinsi biashara za Tanzania zinavyofanya kazi kweli.",
+    },
+    sub: {
+      en: "We design and build business systems, SaaS products and websites for Tanzanian and East African companies. Mobile money, Swahili and local workflows are built in from day one.",
+      sw: "Tunabuni na kujenga mifumo ya biashara, bidhaa za SaaS na tovuti kwa kampuni za Tanzania na Afrika Mashariki. Malipo ya simu, Kiswahili na mtiririko wa kazi wa hapa vimejumuishwa tangu siku ya kwanza.",
+    },
+    // Three loud words, one per line.
+    words: {
+      en: ["Build.", "Ship.", "Scale."],
+      sw: ["Jenga.", "Tuma.", "Kua."],
+    },
+    tags: [
+      { en: "Systems", sw: "Mifumo" },
+      { en: "SaaS", sw: "SaaS" },
+      { en: "Websites", sw: "Tovuti" },
+    ],
+    lead: {
+      en: "Business systems, SaaS and websites for Tanzanian and East African companies. Mobile money and Swahili built in from day one.",
+      sw: "Mifumo ya biashara, SaaS na tovuti kwa kampuni za Tanzania na Afrika Mashariki. Malipo ya simu na Kiswahili tangu siku ya kwanza.",
+    },
+    primary: { en: "Start a project", sw: "Anza mradi" },
+    secondary: { en: "See our work", sw: "Tazama kazi zetu" },
+    buildFor: { en: "We build for", sw: "Tunajenga kwa" },
+    // Each one is work we have actually done or are doing.
+    audiences: [
+      { en: "car importers.", sw: "waagizaji wa magari." },
+      { en: "shop owners.", sw: "wenye maduka." },
+      { en: "event organisers.", sw: "waandaaji wa matukio." },
+      { en: "WiFi hotspot owners.", sw: "wamiliki wa hotspot za WiFi." },
+      { en: "clearing and forwarding firms.", sw: "kampuni za kusafirisha mizigo." },
+    ],
+    // PLACEHOLDER numbers: replace with real, checkable figures
+    stats: [
+      { v: "6", l: { en: "Products and systems", sw: "Bidhaa na mifumo" } },
+      { v: "4", l: { en: "Core services", sw: "Huduma kuu" } },
+    ],
+  },
+  work: {
+    title: { en: "Work Done", sw: "Kazi Zilizofanyika" },
+    sub: {
+      en: "Systems and products we have built for Tanzanian businesses.",
+      sw: "Mifumo na bidhaa tulizojenga kwa biashara za Tanzania.",
+    },
+    filters: {
+      all: { en: "All", sw: "Zote" },
+      systems: { en: "Business systems", sw: "Mifumo ya biashara" },
+      saas: { en: "SaaS", sw: "SaaS" },
+      websites: { en: "Websites", sw: "Tovuti" },
+    },
+    view: { en: "View case study", sw: "Soma kisa kamili" },
+    visit: { en: "Visit site", sw: "Tembelea tovuti" },
+    building: { en: "Currently building", sw: "Tunayojenga sasa" },
+    clients: { en: "Companies we have worked with", sw: "Kampuni tulizofanya nazo kazi" },
+    shotNote: { en: "Screenshot to add", sw: "Picha itaongezwa" },
+    prev: { en: "Previous", sw: "Iliyotangulia" },
+    next: { en: "Next", sw: "Inayofuata" },
+  },
+  case: {
+    back: { en: "All work", sw: "Kazi zote" },
+    problem: { en: "The problem", sw: "Tatizo" },
+    built: { en: "What we built", sw: "Tulichojenga" },
+    result: { en: "Result", sw: "Matokeo" },
+    stack: { en: "Built with", sw: "Teknolojia" },
+    status: { en: "Status", sw: "Hali" },
+    type: { en: "Type", sw: "Aina" },
+    ctaTitle: { en: "Need something like this?", sw: "Unahitaji kitu kama hiki?" },
+    ctaBtn: { en: "Talk to us about it", sw: "Zungumza nasi kuhusu hili" },
+    notFound: { en: "That project was not found.", sw: "Mradi huo haukupatikana." },
+  },
+  services: {
+    title: { en: "What we do", sw: "Tunachofanya" },
+    forLabel: { en: "Who it is for", sw: "Kwa nani" },
+    getLabel: { en: "What you get", sw: "Unachopata" },
+    items: [
+      {
+        name: { en: "Mobile money payments, built in", sw: "Malipo ya simu yaliyojengwa ndani" },
+        for: {
+          en: "Shops, stores and apps that need customers to pay with their phones.",
+          sw: "Maduka, biashara na programu zinazohitaji wateja kulipa kwa simu zao.",
+        },
+        get: {
+          en: "M-Pesa, Mixx by Yas, Airtel Money and HaloPesa wired into checkout, with payment records you can trust.",
+          sw: "M-Pesa, Mixx by Yas, Airtel Money na HaloPesa vimeunganishwa kwenye malipo, pamoja na rekodi za malipo unazoweza kuziamini.",
+        },
+      },
+      {
+        name: { en: "Offline-first point of sale", sw: "Mfumo wa mauzo usiohitaji intaneti" },
+        for: {
+          en: "Shops and retailers who lose sales when the network drops.",
+          sw: "Maduka na wauzaji wanaopoteza mauzo mtandao unapokatika.",
+        },
+        get: {
+          en: "A POS that keeps selling offline and syncs stock and sales when the connection returns.",
+          sw: "POS inayoendelea kuuza bila intaneti na kusawazisha stoo na mauzo mtandao ukirudi.",
+        },
+      },
+      {
+        name: { en: "Online stores and e-commerce", sw: "Maduka ya mtandaoni na biashara mtandaoni" },
+        for: {
+          en: "Brands, artists and sellers who want their own store instead of selling through chat.",
+          sw: "Chapa, wasanii na wauzaji wanaotaka duka lao badala ya kuuza kwenye gumzo.",
+        },
+        get: {
+          en: "A bilingual store with catalogue, cart, orders and merch drops, built for Tanzanian buyers.",
+          sw: "Duka la lugha mbili lenye orodha ya bidhaa, kikapu, oda na uzinduzi wa bidhaa mpya, lililojengwa kwa wanunuzi wa Tanzania.",
+        },
+      },
+      {
+        name: { en: "Ticketing and fan apps", sw: "Tiketi na programu za mashabiki" },
+        for: {
+          en: "Event organisers, teams and venues who sell tickets and want a direct line to their crowd.",
+          sw: "Waandaaji wa matukio, timu na kumbi zinazouza tiketi na kutaka mawasiliano ya moja kwa moja na umati wao.",
+        },
+        get: {
+          en: "Ticket sales, check-in, match-day info and predictions in one app your fans actually open.",
+          sw: "Uuzaji wa tiketi, kuwapokea watu, taarifa za siku ya mechi na utabiri katika programu moja ambayo mashabiki wako wataifungua.",
+        },
+      },
+      {
+        name: { en: "Mobile apps that install from the browser", sw: "Programu za simu zinazosakinishwa kwenye kivinjari" },
+        for: {
+          en: "Founders who want an app on customers' phones without the app store or heavy data use.",
+          sw: "Waanzilishi wanaotaka programu kwenye simu za wateja bila duka la programu wala matumizi makubwa ya data.",
+        },
+        get: {
+          en: "A fast installable web app that works on budget phones, in English and Swahili.",
+          sw: "Programu ya wavuti ya haraka inayosakinishwa na kufanya kazi kwenye simu za bei nafuu, kwa Kiingereza na Kiswahili.",
+        },
+      },
+      {
+        name: { en: "WiFi monetization", sw: "Kuuza huduma ya WiFi" },
+        for: {
+          en: "Hotspot owners, cafes and estates who want to be paid for WiFi access.",
+          sw: "Wamiliki wa hotspot, mikahawa na makazi wanaotaka kulipwa kwa huduma ya WiFi.",
+        },
+        get: {
+          en: "A captive portal where users buy access with mobile money, with vouchers and usage tracking.",
+          sw: "Ukurasa wa kuingilia ambapo watumiaji hununua huduma kwa malipo ya simu, pamoja na vocha na ufuatiliaji wa matumizi.",
+        },
+      },
+      {
+        name: { en: "Websites that bring WhatsApp leads", sw: "Tovuti zinazoleta wateja WhatsApp" },
+        for: {
+          en: "Businesses, agencies and personal brands that need a site that converts visitors into enquiries.",
+          sw: "Biashara, mawakala na chapa binafsi zinazohitaji tovuti inayogeuza wageni kuwa maulizo.",
+        },
+        get: {
+          en: "A fast bilingual site with click-to-chat on WhatsApp, enquiry forms and search basics.",
+          sw: "Tovuti ya haraka ya lugha mbili yenye WhatsApp ya kubofya, fomu za maulizo na misingi ya SEO.",
+        },
+      },
+      {
+        name: { en: "School and business systems", sw: "Mifumo ya shule na biashara" },
+        for: {
+          en: "Schools, importers, logistics firms and retailers running on spreadsheets and chat groups.",
+          sw: "Shule, waagizaji, kampuni za usafirishaji na wauzaji wanaotumia Excel na vikundi vya gumzo.",
+        },
+        get: {
+          en: "A system built around how your team works, with roles, dashboards and reports, from student records to vehicle imports.",
+          sw: "Mfumo uliojengwa kulingana na jinsi timu yako inavyofanya kazi, wenye majukumu, dashibodi na ripoti, kuanzia rekodi za wanafunzi hadi uagizaji wa magari.",
+        },
+      },
+    ],
+  },
+  process: { en: "Process", sw: "Mchakato" },
+    team: { en: "Team", sw: "Timu" },
+    engage: { en: "Work with us", sw: "Fanya kazi nasi" },
+    cta: { en: "Start a project", sw: "Anza mradi" },
+    menu: { en: "Menu", sw: "Menyu" },
+    close: { en: "Close", sw: "Funga" },
+    theme: { en: "Switch light or dark", sw: "Badilisha mwangaza au giza" },
+  },
+  marquee: [
+    { en: "Business systems", sw: "Mifumo ya biashara" },
+    { en: "Mobile apps", sw: "Programu za simu" },
+    { en: "E-commerce", sw: "Biashara mtandaoni" },
+    { en: "Mobile money payments", sw: "Malipo ya simu" },
     { en: "Built in Tanzania", sw: "Imejengwa Tanzania" },
     { en: "Mobile money ready", sw: "Tayari kwa malipo ya simu" },
     { en: "Swahili and English", sw: "Kiswahili na Kiingereza" },
