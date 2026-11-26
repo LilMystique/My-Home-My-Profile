@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { LangProvider } from "./lib/i18n.jsx";
 import App from "./App.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 // Restore a saved theme choice. With none saved, the page follows the phone's setting.
 try {
@@ -16,6 +17,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <LangProvider>
       <App />
+      <Analytics />
     </LangProvider>
   </StrictMode>
 );
