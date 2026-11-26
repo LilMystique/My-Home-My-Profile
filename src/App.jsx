@@ -8,7 +8,6 @@ import CaseStudy from "./components/CaseStudy.jsx";
 import Services from "./components/Services.jsx";
 import Process from "./components/Process.jsx";
 import Team from "./components/Team.jsx";
-import Engage from "./components/Engage.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
@@ -75,7 +74,6 @@ export default function App() {
           <Work />
           <Services />
           <Team />
-          <Engage />
         </main>
       )}
       <Contact intent={intent} />

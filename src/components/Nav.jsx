@@ -8,7 +8,6 @@ const LINKS = [
   ["services", UI.nav.services],
   ["process", UI.nav.process],
   ["team", UI.nav.team],
-  ["engage", UI.nav.engage],
 ];
 
 const isDark = () => {
