@@ -306,25 +306,70 @@ export const UI = {
 // Add a screenshot at public/work/<slug>.webp and set image to "/work/<slug>.webp".
 export const PROJECTS = [
   {
-    slug: "jahazi",
-    name: "Jahazi",
+    slug: "darcity",
+    name: "DarCity",
     category: "saas",
-    status: { en: "Product", sw: "Bidhaa" },
+    status: { en: "Demo", sw: "Onyesho" },
     line: {
-      en: "SaaS for Tanzanian car importers, from order to delivery.",
-      sw: "SaaS kwa waagizaji wa magari Tanzania, kuanzia oda hadi kukabidhi.",
+      en: "Fan app for a basketball team: tickets, schedule, predictions and a shop.",
+      sw: "Programu ya mashabiki wa timu ya mpira wa kikapu: tiketi, ratiba, utabiri na duka.",
     },
     problem: {
-      en: "Car importers track vehicles, costs and customer payments across chat groups and spreadsheets, so nobody has one clear picture.",
-      sw: "Waagizaji wa magari hufuatilia magari, gharama na malipo ya wateja kupitia vikundi vya gumzo na Excel, hivyo hakuna anayeona picha nzima.",
+      en: "Fans find fixtures, tickets and team news in different places, and teams miss a direct line to their supporters.",
+      sw: "Mashabiki hupata ratiba, tiketi na habari za timu sehemu tofauti, na timu hukosa mawasiliano ya moja kwa moja na wafuasi wao.",
     },
     built: {
-      en: "A multi-tenant platform where each importer runs their own branded workspace for the full import flow.",
-      sw: "Jukwaa la wateja wengi ambapo kila muagizaji ana nafasi yake yenye chapa yake kwa mtiririko mzima wa uagizaji.",
+      en: "A mobile-first fan app with match-day info, ticket buying, score predictions and a team shop, built as a demo for the club.",
+      sw: "Programu ya mashabiki kwa simu yenye taarifa za siku ya mechi, ununuzi wa tiketi, utabiri wa matokeo na duka la timu, iliyojengwa kama onyesho kwa klabu.",
     },
     result: null,
-    stack: ["React", "Supabase", "Tailwind"],
-    image: "",
+    stack: ["React", "Vite", "PWA"],
+    image: "/work/darcity.webp",
+    url: "https://darcity-app.vercel.app",
+  },
+  {
+    slug: "swahili-bookshelf",
+    name: "The Swahili Bookshelf",
+    category: "saas",
+    status: { en: "Live", sw: "Inafanya kazi" },
+    line: {
+      en: "Swahili books, audiobooks and stories in your pocket.",
+      sw: "Vitabu vya Kiswahili, vitabu vya sauti na hadithi mfukoni mwako.",
+    },
+    problem: {
+      en: "Swahili readers have few places to find, buy and read local books on a phone.",
+      sw: "Wasomaji wa Kiswahili wana sehemu chache za kutafuta, kununua na kusoma vitabu vya hapa kwenye simu.",
+    },
+    built: {
+      en: "A reading app with ebooks, audiobooks and stories, daily reading goals, a personal library and an English and Swahili interface.",
+      sw: "Programu ya kusoma yenye vitabu pepe, vitabu vya sauti na hadithi, malengo ya kila siku ya kusoma, maktaba binafsi na lugha za Kiingereza na Kiswahili.",
+    },
+    result: null,
+    stack: ["React", "Vite", "PWA"],
+    image: "/work/swahili-bookshelf.webp",
+    url: "https://swahilibookshelf.vercel.app",
+  },
+  {
+    slug: "nalink",
+    name: "Nalink",
+    category: "saas",
+    status: { en: "Live", sw: "Inafanya kazi" },
+    line: {
+      en: "Job search and hiring in Dar es Salaam, matched by real recruiters.",
+      sw: "Kutafuta kazi na kuajiri Dar es Salaam, kwa msaada wa waajiri halisi.",
+    },
+    problem: {
+      en: "Employers drown in applications and seekers never hear back.",
+      sw: "Waajiri hufurika maombi na wanaotafuta kazi hawapati majibu.",
+    },
+    built: {
+      en: "A jobs platform where seekers apply free and companies get a shortlist of 3 to 5 candidates chosen by people who read every application.",
+      sw: "Jukwaa la kazi ambapo wanaotafuta kazi huomba bure na kampuni hupata orodha fupi ya wagombea 3 hadi 5 waliochaguliwa na watu wanaosoma kila ombi.",
+    },
+    result: null,
+    stack: ["React", "Vite"],
+    image: "/work/nalink.webp",
+    url: "https://nalink-h-rapp.vercel.app",
   },
   {
     slug: "manna-pos",
@@ -345,7 +390,7 @@ export const PROJECTS = [
     },
     result: null,
     stack: ["Vite", "React", "Supabase", "PWA"],
-    image: "",
+    image: "/work/manna-pos.webp",
     url: "https://luce-pos.vercel.app",
   },
   {
@@ -367,7 +412,7 @@ export const PROJECTS = [
     },
     result: null,
     stack: ["React", "Supabase", "Tailwind"],
-    image: "",
+    image: "/work/tiketi.webp",
     url: "https://tiketi-app-two.vercel.app",
   },
   {
