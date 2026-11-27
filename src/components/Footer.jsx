@@ -67,18 +67,18 @@ export default function Footer() {
   const insta = CONTACT.social.find((s) => s.label === "Instagram");
 
   return (
-    <footer className="bg-paper pt-6 md:pb-6">
+    <footer className="bg-paper md:pb-6 md:pt-6">
       {/* Phone: full-width square band touching both edges. Desktop: rounded card inside the page width. */}
       <div className="md:mx-auto md:max-w-[72rem] md:px-6">
         <div className="overflow-hidden md:rounded-[2rem] md:border md:border-line-strong">
           <div className="relative bg-band text-band-fg">
             <Pattern />
 
-            <div className="wrap relative flex flex-col items-center py-10 text-center md:py-12">
+            <div className="relative flex flex-col items-center px-4 py-10 text-center md:py-12">
               <a href="#/" aria-label="Capricon Technologies" className="inline-block">
                 <Logo tone="dark" className="h-11 md:h-12" />
               </a>
-              <p className="mt-3 max-w-xs text-sm text-band-mute">{tr(f.tagline)}</p>
+              <p className="mt-3 text-[13px] text-band-mute sm:text-sm">{tr(f.tagline)}</p>
 
               <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
                 {insta && (
@@ -110,7 +110,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="bg-band-fg pb-24 pt-3 text-center text-band md:pb-3">
+          <div className="bg-band-fg py-3 text-center text-band">
             <p className="wrap text-xs leading-relaxed text-band/70">
               <span className="num">&copy; {new Date().getFullYear()}</span> {CONTACT.company}. {tr(f.rights)}
             </p>
