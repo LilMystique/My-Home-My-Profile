@@ -4,7 +4,6 @@ import { CONTACT, UI, waLink } from "../data/content.js";
 import { hasBackend, isPhone, normalizePhone, submitLead } from "../lib/leads.js";
 
 const COOLDOWN_MS = 60000;
-const CATEGORY_TO_NEED = { systems: "systems", saas: "saas", websites: "website" };
 
 const field =
   "mt-1.5 w-full rounded-xl border border-band-line bg-white/5 px-3.5 py-2.5 text-band-fg placeholder:text-band-mute focus:border-band-fg";
@@ -12,7 +11,7 @@ const field =
 export default function Contact({ intent }) {
   const { lang, tr } = useLang();
   const c = UI.contact;
-  const [form, setForm] = useState({ name: "", phone: "", need: "", budget: "", message: "", company: "" });
+  const [form, setForm] = useState({ name: "", phone: "", message: "", company: "" });
   const [errors, setErrors] = useState({});
   const [state, setState] = useState("idle"); // idle | sending | done | fail | wait
   const startedAt = useRef(Date.now());
@@ -22,7 +21,6 @@ export default function Contact({ intent }) {
     if (!intent) return;
     setForm((f) => ({
       ...f,
-      need: CATEGORY_TO_NEED[intent.category] || f.need,
       message: lang === "sw" ? `Ninahitaji kitu kama ${intent.name}.` : `I need something like ${intent.name}.`,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,14 +28,14 @@ export default function Contact({ intent }) {
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const needLabel = c.needs.find((n) => n.v === form.need);
-  const waText = c.waGreeting[lang] + (needLabel ? tr(needLabel.l).toLowerCase() + "." : c.waDefault[lang]);
+  const waText = c.waGreeting[lang] + c.waDefault[lang];
 
   async function onSubmit(e) {
     e.preventDefault();
     const errs = {};
     if (!form.name.trim()) errs.name = true;
     if (!isPhone(form.phone)) errs.phone = true;
+    if (!form.message.trim()) errs.message = true;
     setErrors(errs);
     if (Object.keys(errs).length) return;
 
@@ -72,8 +70,8 @@ export default function Contact({ intent }) {
       await submitLead({
         name: form.name.trim(),
         phone,
-        need: form.need || null,
-        budget: form.budget || null,
+        need: null,
+        budget: null,
         message: form.message.trim() || null,
         lang,
         source: intent ? `case:${intent.slug}` : "site",
@@ -98,26 +96,6 @@ export default function Contact({ intent }) {
         <div>
           <h2 className="text-[clamp(2.75rem,7vw,5rem)] font-semibold leading-none tracking-tight">{tr(c.title)}</h2>
           <p className="mt-4 max-w-md text-lg text-band-mute">{tr(c.sub)}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={waLink(waText)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-band-fg px-7 py-3.5 font-medium text-band hover:opacity-80"
-            >
-              {tr(c.whatsapp)}
-            </a>
-            {CONTACT.bookingUrl && (
-              <a
-                href={CONTACT.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-band-line px-7 py-3.5 font-medium hover:bg-white/10"
-              >
-                {tr(c.book)}
-              </a>
-            )}
-          </div>
         </div>
 
         {state === "done" ? (
@@ -155,34 +133,17 @@ export default function Contact({ intent }) {
               </label>
             </div>
 
-            <div className="grid gap-3.5 sm:grid-cols-2">
-              <label className="block text-sm font-medium">
-                {tr(c.need)}
-                <select className={field} value={form.need} onChange={set("need")}>
-                  <option value="" className="bg-white text-black"></option>
-                  {c.needs.map((n) => (
-                    <option key={n.v} value={n.v} className="bg-white text-black">
-                      {tr(n.l)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="block text-sm font-medium">
-                {tr(c.budget)}
-                <select className={field} value={form.budget} onChange={set("budget")}>
-                  <option value="" className="bg-white text-black"></option>
-                  {c.budgets.map((b) => (
-                    <option key={b.v} value={b.v} className="bg-white text-black">
-                      {tr(b.l)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
             <label className="block text-sm font-medium">
-              {tr(c.message)}
-              <textarea className={field} rows={2} value={form.message} onChange={set("message")} />
+              {tr(c.need)}
+              <textarea
+                className={field}
+                rows={4}
+                value={form.message}
+                onChange={set("message")}
+                placeholder={tr(c.needPlaceholder)}
+                aria-invalid={Boolean(errors.message)}
+              />
+              {errors.message && <span className="mt-1 block text-sm font-medium">{tr(c.required)}</span>}
             </label>
 
             {/* Honeypot: hidden from people, filled by bots */}

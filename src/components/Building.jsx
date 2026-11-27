@@ -1,7 +1,7 @@
 import { useLang } from "../lib/i18n.jsx";
 import { BUILDING, UI } from "../data/content.js";
 
-// "Currently building" as two rows of chips drifting in opposite directions.
+// "Currently building" as two rows of plain text drifting in opposite directions.
 // Two rows use far less height than a list, and the motion shows the work is live.
 function Row({ items, reverse, seconds, minChips }) {
   const { tr } = useLang();
@@ -9,14 +9,14 @@ function Row({ items, reverse, seconds, minChips }) {
   const chips = Array.from({ length: repeat }).flatMap(() => items);
 
   const Copy = ({ hidden }) => (
-    <ul className="flex shrink-0 gap-2.5 pr-2.5" aria-hidden={hidden ? "true" : undefined}>
+    <ul className="flex shrink-0 gap-9 pr-9" aria-hidden={hidden ? "true" : undefined}>
       {chips.map((b, i) => (
         <li
           key={i}
           data-dup={i >= items.length ? "" : undefined}
-          className="flex items-baseline gap-2 whitespace-nowrap rounded-full border border-line bg-ink/5 px-4 py-2.5"
+          className="flex items-baseline gap-2 whitespace-nowrap py-1"
         >
-          <span className="text-sm font-semibold">{b.name}</span>
+          <span className="text-base font-semibold">{b.name}</span>
           <span className="text-sm text-mute">{tr(b.note)}</span>
         </li>
       ))}

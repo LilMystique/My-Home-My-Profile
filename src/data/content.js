@@ -3,6 +3,7 @@
 export const CONTACT = {
   company: "Capricon Technologies, Tanzania",
   whatsapp: "255734390606", // international format, no plus sign; used only for chat links
+  phone: "0657 945 171", // shown in the footer; tel link uses the digits
   email: "capriconempire@gmail.com",
   location: { en: "Tanzania", sw: "Tanzania" }, // PLACEHOLDER: add office city
   bookingUrl: "", // optional: Calendly or Google Calendar link; hidden when empty
@@ -26,10 +27,10 @@ export const UI = {
     theme: { en: "Switch light or dark", sw: "Badilisha mwangaza au giza" },
   },
   marquee: [
-    { en: "Business systems", sw: "Mifumo ya biashara" },
+    { en: "Software development", sw: "Utengenezaji wa programu" },
     { en: "Mobile apps", sw: "Programu za simu" },
-    { en: "E-commerce", sw: "Biashara mtandaoni" },
-    { en: "Mobile money payments", sw: "Malipo ya simu" },
+    { en: "Websites", sw: "Tovuti" },
+    { en: "Graphic design", sw: "Ubunifu wa michoro" },
     { en: "Built in Tanzania", sw: "Imejengwa Tanzania" },
     { en: "Mobile money ready", sw: "Tayari kwa malipo ya simu" },
     { en: "Swahili and English", sw: "Kiswahili na Kiingereza" },
@@ -72,7 +73,6 @@ export const UI = {
     // PLACEHOLDER numbers: replace with real, checkable figures
     stats: [
       { v: "8", l: { en: "Products and systems", sw: "Bidhaa na mifumo" } },
-      { v: "8", l: { en: "Core services", sw: "Huduma kuu" } },
     ],
   },
   work: {
@@ -109,96 +109,40 @@ export const UI = {
   },
   services: {
     title: { en: "What we do", sw: "Tunachofanya" },
-    forLabel: { en: "Who it is for", sw: "Kwa nani" },
-    getLabel: { en: "What you get", sw: "Unachopata" },
+    sub: {
+      en: "Two disciplines, done properly. One team from idea to launch.",
+      sw: "Fani mbili, zinazofanywa kwa ubora. Timu moja kuanzia wazo hadi uzinduzi.",
+    },
     items: [
       {
-        name: { en: "Mobile money payments, built in", sw: "Malipo ya simu yaliyojengwa ndani" },
-        for: {
-          en: "Shops, stores and apps that need customers to pay with their phones.",
-          sw: "Maduka, biashara na programu zinazohitaji wateja kulipa kwa simu zao.",
+        name: { en: "Software and app development", sw: "Utengenezaji wa programu na mifumo" },
+        text: {
+          en: "We design, build and maintain software for businesses, from the first idea to launch and ongoing support.",
+          sw: "Tunabuni, kutengeneza na kutunza programu za biashara, kuanzia wazo la kwanza hadi uzinduzi na msaada wa kudumu.",
         },
-        get: {
-          en: "M-Pesa, Mixx by Yas, Airtel Money and HaloPesa wired into checkout, with payment records you can trust.",
-          sw: "M-Pesa, Mixx by Yas, Airtel Money na HaloPesa vimeunganishwa kwenye malipo, pamoja na rekodi za malipo unazoweza kuziamini.",
-        },
+        list: [
+          { en: "Business systems and dashboards", sw: "Mifumo ya biashara na dashibodi" },
+          { en: "Web applications and SaaS platforms", sw: "Programu za wavuti na majukwaa ya SaaS" },
+          { en: "Mobile apps that install from the browser", sw: "Programu za simu zinazosakinishwa kwenye kivinjari" },
+          { en: "Websites and online stores", sw: "Tovuti na maduka ya mtandaoni" },
+          { en: "Point of sale and inventory systems", sw: "Mifumo ya mauzo na stoo" },
+          { en: "Mobile money, SMS and WhatsApp integration", sw: "Kuunganisha malipo ya simu, SMS na WhatsApp" },
+          { en: "Hosting, maintenance and support", sw: "Uhifadhi, matengenezo na msaada" },
+        ],
       },
       {
-        name: { en: "Offline-first point of sale", sw: "Mfumo wa mauzo usiohitaji intaneti" },
-        for: {
-          en: "Shops and retailers who lose sales when the network drops.",
-          sw: "Maduka na wauzaji wanaopoteza mauzo mtandao unapokatika.",
+        name: { en: "Graphic design", sw: "Ubunifu wa michoro" },
+        text: {
+          en: "Visuals that make a business look credible and consistent, online and in print.",
+          sw: "Michoro inayofanya biashara ionekane ya kuaminika na yenye mpangilio, mtandaoni na kwenye machapisho.",
         },
-        get: {
-          en: "A POS that keeps selling offline and syncs stock and sales when the connection returns.",
-          sw: "POS inayoendelea kuuza bila intaneti na kusawazisha stoo na mauzo mtandao ukirudi.",
-        },
-      },
-      {
-        name: { en: "Online stores and e-commerce", sw: "Maduka ya mtandaoni na biashara mtandaoni" },
-        for: {
-          en: "Brands, artists and sellers who want their own store instead of selling through chat.",
-          sw: "Chapa, wasanii na wauzaji wanaotaka duka lao badala ya kuuza kwenye gumzo.",
-        },
-        get: {
-          en: "A bilingual store with catalogue, cart, orders and merch drops, built for Tanzanian buyers.",
-          sw: "Duka la lugha mbili lenye orodha ya bidhaa, kikapu, oda na uzinduzi wa bidhaa mpya, lililojengwa kwa wanunuzi wa Tanzania.",
-        },
-      },
-      {
-        name: { en: "Ticketing and fan apps", sw: "Tiketi na programu za mashabiki" },
-        for: {
-          en: "Event organisers, teams and venues who sell tickets and want a direct line to their crowd.",
-          sw: "Waandaaji wa matukio, timu na kumbi zinazouza tiketi na kutaka mawasiliano ya moja kwa moja na umati wao.",
-        },
-        get: {
-          en: "Ticket sales, check-in, match-day info and predictions in one app your fans actually open.",
-          sw: "Uuzaji wa tiketi, kuwapokea watu, taarifa za siku ya mechi na utabiri katika programu moja ambayo mashabiki wako wataifungua.",
-        },
-      },
-      {
-        name: { en: "Mobile apps that install from the browser", sw: "Programu za simu zinazosakinishwa kwenye kivinjari" },
-        for: {
-          en: "Founders who want an app on customers' phones without the app store or heavy data use.",
-          sw: "Waanzilishi wanaotaka programu kwenye simu za wateja bila duka la programu wala matumizi makubwa ya data.",
-        },
-        get: {
-          en: "A fast installable web app that works on budget phones, in English and Swahili.",
-          sw: "Programu ya wavuti ya haraka inayosakinishwa na kufanya kazi kwenye simu za bei nafuu, kwa Kiingereza na Kiswahili.",
-        },
-      },
-      {
-        name: { en: "WiFi monetization", sw: "Kuuza huduma ya WiFi" },
-        for: {
-          en: "Hotspot owners, cafes and estates who want to be paid for WiFi access.",
-          sw: "Wamiliki wa hotspot, mikahawa na makazi wanaotaka kulipwa kwa huduma ya WiFi.",
-        },
-        get: {
-          en: "A captive portal where users buy access with mobile money, with vouchers and usage tracking.",
-          sw: "Ukurasa wa kuingilia ambapo watumiaji hununua huduma kwa malipo ya simu, pamoja na vocha na ufuatiliaji wa matumizi.",
-        },
-      },
-      {
-        name: { en: "Websites that bring WhatsApp leads", sw: "Tovuti zinazoleta wateja WhatsApp" },
-        for: {
-          en: "Businesses, agencies and personal brands that need a site that converts visitors into enquiries.",
-          sw: "Biashara, mawakala na chapa binafsi zinazohitaji tovuti inayogeuza wageni kuwa maulizo.",
-        },
-        get: {
-          en: "A fast bilingual site with click-to-chat on WhatsApp, enquiry forms and search basics.",
-          sw: "Tovuti ya haraka ya lugha mbili yenye WhatsApp ya kubofya, fomu za maulizo na misingi ya SEO.",
-        },
-      },
-      {
-        name: { en: "School and business systems", sw: "Mifumo ya shule na biashara" },
-        for: {
-          en: "Schools, importers, logistics firms and retailers running on spreadsheets and chat groups.",
-          sw: "Shule, waagizaji, kampuni za usafirishaji na wauzaji wanaotumia Excel na vikundi vya gumzo.",
-        },
-        get: {
-          en: "A system built around how your team works, with roles, dashboards and reports, from student records to vehicle imports.",
-          sw: "Mfumo uliojengwa kulingana na jinsi timu yako inavyofanya kazi, wenye majukumu, dashibodi na ripoti, kuanzia rekodi za wanafunzi hadi uagizaji wa magari.",
-        },
+        list: [
+          { en: "Logos and brand identity", sw: "Nembo na utambulisho wa chapa" },
+          { en: "Social media posts and ads", sw: "Machapisho na matangazo ya mitandao ya kijamii" },
+          { en: "Posters, flyers and banners", sw: "Mabango, vipeperushi na mabango makubwa" },
+          { en: "Business cards and company profiles", sw: "Kadi za biashara na wasifu wa kampuni" },
+          { en: "App and website interface design", sw: "Ubunifu wa muonekano wa programu na tovuti" },
+        ],
       },
     ],
   },
@@ -295,6 +239,10 @@ export const UI = {
     name: { en: "Name", sw: "Jina" },
     phone: { en: "Phone or WhatsApp", sw: "Simu au WhatsApp" },
     need: { en: "What do you need?", sw: "Unahitaji nini?" },
+    needPlaceholder: {
+      en: "Describe it in your own words. For example: a system to track stock and sales for my 2 shops.",
+      sw: "Elezea kwa maneno yako. Mfano: mfumo wa kufuatilia stoo na mauzo kwa maduka yangu 2.",
+    },
     budget: { en: "Budget range (optional)", sw: "Bajeti (si lazima)" },
     message: { en: "Anything else (optional)", sw: "Maelezo zaidi (si lazima)" },
     send: { en: "Send", sw: "Tuma" },

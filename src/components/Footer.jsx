@@ -1,11 +1,7 @@
-import { useRef, useState } from "react";
 import { useLang } from "../lib/i18n.jsx";
 import { CONTACT, UI, waLink } from "../data/content.js";
-import { hasBackend, isPhone, normalizePhone, submitLead } from "../lib/leads.js";
 import Logo from "./Logo.jsx";
 import darkLogo from "../assets/logo-dark.png";
-
-const COOLDOWN_MS = 60000;
 
 // Big faint wordmark along the bottom of the card, like a watermark.
 function Pattern() {
@@ -53,179 +49,69 @@ function SocialIcon({ label }) {
       </svg>
     );
   }
+  if (label === "WhatsApp") {
+    return (
+      <svg {...common} fill="currentColor">
+        <path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2zm0 16a7.2 7.2 0 0 1-3.7-1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.2zm4-5.4c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a5.9 5.9 0 0 1-2.9-2.6c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.3c1.4.6 1.9.6 2.6.5.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.3-.2z" />
+      </svg>
+    );
+  }
   return <span className="text-sm font-semibold">{label.slice(0, 1)}</span>;
 }
 
-// One field: leave a number, get a call. Same checks as the main form: honeypot, cooldown, WhatsApp fallback.
-function CallbackForm() {
-  const { lang, tr } = useLang();
-  const f = UI.footer;
-  const [phone, setPhone] = useState("");
-  const [company, setCompany] = useState("");
-  const [state, setState] = useState("idle"); // idle | invalid | sending | done | fail | wait
-  const startedAt = useRef(Date.now());
-
-  async function onSubmit(e) {
-    e.preventDefault();
-    if (!isPhone(phone)) {
-      setState("invalid");
-      return;
-    }
-    if (company || Date.now() - startedAt.current < 1500) {
-      setState("done");
-      return;
-    }
-    try {
-      if (Date.now() - Number(localStorage.getItem("lead_ts") || 0) < COOLDOWN_MS) {
-        setState("wait");
-        return;
-      }
-    } catch {
-      /* storage blocked: skip the browser cooldown, the database still limits */
-    }
-
-    const number = normalizePhone(phone);
-    if (!hasBackend) {
-      window.open(waLink(`${UI.contact.waGreeting[lang]}${UI.contact.waDefault[lang]}\n${number}`), "_blank", "noopener");
-      setState("done");
-      return;
-    }
-
-    setState("sending");
-    try {
-      await submitLead({ name: "Callback request", phone: number, need: null, budget: null, message: null, lang, source: "footer" });
-      try {
-        localStorage.setItem("lead_ts", String(Date.now()));
-      } catch {
-        /* ignore */
-      }
-      setState("done");
-    } catch {
-      setState("fail");
-    }
-  }
-
-  if (state === "done") {
-    return (
-      <p className="mt-3 rounded-2xl border border-band-line px-4 py-3 text-sm font-medium" role="status">
-        {tr(f.callDone)}
-      </p>
-    );
-  }
-
-  return (
-    <form onSubmit={onSubmit} noValidate className="relative mt-3 max-w-sm">
-      <div className="flex rounded-full bg-band-fg p-1">
-        <input
-          id="footer-phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder={tr(f.callPlaceholder)}
-          aria-label={tr(f.callPlaceholder)}
-          aria-invalid={state === "invalid"}
-          className="min-w-0 flex-1 bg-transparent px-4 text-sm text-band placeholder:text-band/50 focus:outline-none"
-        />
-        <button
-          type="submit"
-          disabled={state === "sending"}
-          className="shrink-0 cursor-pointer rounded-full bg-band px-5 py-2.5 text-sm font-medium text-band-fg hover:opacity-80 disabled:opacity-60"
-        >
-          {tr(state === "sending" ? f.callSending : f.callBtn)}
-        </button>
-      </div>
-      <div className="absolute -left-[9999px]" aria-hidden="true">
-        <label>
-          Company
-          <input tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} />
-        </label>
-      </div>
-      {state === "invalid" && (
-        <p className="mt-2 text-sm font-medium" role="alert">
-          {tr(UI.contact.badPhone)}
-        </p>
-      )}
-      {state === "fail" && (
-        <p className="mt-2 text-sm font-medium" role="alert">
-          {tr(UI.contact.fail)}
-        </p>
-      )}
-      {state === "wait" && (
-        <p className="mt-2 text-sm text-band-mute" role="alert">
-          {tr(UI.contact.wait)}
-        </p>
-      )}
-    </form>
-  );
-}
-
-const heading = "text-base font-semibold";
-const link = "text-sm text-band-mute hover:text-band-fg";
+const iconBtn = "flex h-10 w-10 items-center justify-center rounded-full bg-band-fg text-band hover:opacity-80";
 
 export default function Footer() {
   const { tr } = useLang();
   const f = UI.footer;
-
+  const insta = CONTACT.social.find((s) => s.label === "Instagram");
 
   return (
-    <footer className="bg-paper pb-24 pt-6 md:pb-6">
-      <div className="wrap">
-        <div className="overflow-hidden rounded-[2rem] border border-line-strong">
+    <footer className="bg-paper pt-6 md:pb-6">
+      {/* Phone: full-width square band touching both edges. Desktop: rounded card inside the page width. */}
+      <div className="md:mx-auto md:max-w-[72rem] md:px-6">
+        <div className="overflow-hidden md:rounded-[2rem] md:border md:border-line-strong">
           <div className="relative bg-band text-band-fg">
             <Pattern />
 
-            <div className="relative grid gap-7 p-5 md:grid-cols-[1.1fr_1.2fr_1fr] md:gap-10 md:p-7">
-              <div>
-                <a href="#/" aria-label="Capricon Technologies" className="inline-block">
-                  <Logo tone="dark" className="h-10 md:h-11" />
+            <div className="wrap relative flex flex-col items-center py-10 text-center md:py-12">
+              <a href="#/" aria-label="Capricon Technologies" className="inline-block">
+                <Logo tone="dark" className="h-11 md:h-12" />
+              </a>
+              <p className="mt-3 max-w-xs text-sm text-band-mute">{tr(f.tagline)}</p>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+                {insta && (
+                  <a href={insta.href} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={iconBtn}>
+                    <SocialIcon label="Instagram" />
+                  </a>
+                )}
+                <a
+                  href={waLink(UI.contact.waGreeting.en + UI.contact.waDefault.en)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className={iconBtn}
+                >
+                  <SocialIcon label="WhatsApp" />
                 </a>
-                <p className="mt-2 max-w-xs text-sm text-band-mute">{tr(f.tagline)}</p>
-                <ul className="mt-4 flex gap-2.5">
-                  {CONTACT.social.map((s) => (
-                    <li key={s.label}>
-                      <a
-                        href={s.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className="flex h-9 w-9 items-center justify-center rounded-full bg-band-fg text-band hover:opacity-80"
-                      >
-                        <SocialIcon label={s.label} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <a
+                  href={`tel:+255${CONTACT.phone.replace(/\D/g, "").replace(/^0/, "")}`}
+                  className="num flex h-10 items-center rounded-full border border-band-line px-5 text-sm font-medium hover:bg-white/10"
+                >
+                  {CONTACT.phone}
+                </a>
               </div>
 
-              <div>
-                <p className={heading}>{tr(f.callTitle)}</p>
-                <p className="mt-1 text-sm text-band-mute">{tr(f.callText)}</p>
-                <CallbackForm />
-              </div>
-
-              <div>
-                <p className={heading}>{tr(f.contact)}</p>
-                <ul className="mt-2 space-y-1.5">
-                  <li>
-                    <a href={waLink(UI.contact.waGreeting.en + UI.contact.waDefault.en)} target="_blank" rel="noopener noreferrer" className={link}>
-                      {tr(UI.contact.whatsapp)}
-                    </a>
-                  </li>
-                  <li>
-                    <a href={`mailto:${CONTACT.email}`} className={link}>
-                      {CONTACT.email}
-                    </a>
-                  </li>
-                  <li className="text-sm text-band-mute">{tr(CONTACT.location)}</li>
-                </ul>
-              </div>
+              <a href={`mailto:${CONTACT.email}`} className="mt-5 text-sm text-band-mute hover:text-band-fg">
+                {CONTACT.email}
+              </a>
+              <p className="mt-1 text-sm text-band-mute">{tr(CONTACT.location)}</p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 bg-band-fg px-5 py-3 text-band ">
-            <p className="text-xs leading-relaxed text-band/70">
+          <div className="bg-band-fg pb-24 pt-3 text-center text-band md:pb-3">
+            <p className="wrap text-xs leading-relaxed text-band/70">
               <span className="num">&copy; {new Date().getFullYear()}</span> {CONTACT.company}. {tr(f.rights)}
             </p>
           </div>
