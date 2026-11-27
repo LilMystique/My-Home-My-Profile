@@ -106,7 +106,6 @@ export default function Footer() {
               <a href={`mailto:${CONTACT.email}`} className="mt-5 text-sm text-band-mute hover:text-band-fg">
                 {CONTACT.email}
               </a>
-              <p className="mt-1 text-sm text-band-mute">{tr(CONTACT.location)}</p>
             </div>
           </div>
 
