@@ -1,78 +1,63 @@
-import { useState } from "react";
 import { useLang } from "../lib/i18n.jsx";
 import { PROJECTS, UI } from "../data/content.js";
-import Shot from "./Shot.jsx";
 import Rail from "./Rail.jsx";
 import Building from "./Building.jsx";
 
-const FILTERS = ["all", "systems", "saas", "websites"];
-
 export default function Work() {
   const { tr } = useLang();
-  const [filter, setFilter] = useState("all");
-  const list = filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
+  const total = String(PROJECTS.length).padStart(2, "0");
 
   return (
     <section id="work" className="wrap py-14 md:py-20">
-      <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(UI.work.title)}</h2>
-          <p className="mt-3 max-w-xl text-mute">{tr(UI.work.sub)}</p>
-        </div>
-
-        <div
-          role="group"
-          aria-label="Filter"
-          className="no-scrollbar inline-flex max-w-full self-start overflow-x-auto rounded-full border border-line bg-ink/5 p-1"
-        >
-          {FILTERS.map((f) => (
-            <button
-              key={f}
-              type="button"
-              onClick={() => setFilter(f)}
-              aria-pressed={filter === f}
-              className={`shrink-0 cursor-pointer whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium ${
-                filter === f ? "bg-ink text-paper" : "text-mute hover:text-ink"
-              }`}
-            >
-              {tr(UI.work.filters[f])}
-            </button>
-          ))}
-        </div>
-      </div>
+      <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(UI.work.title)}</h2>
+      <p className="mt-3 max-w-xl text-mute">{tr(UI.work.sub)}</p>
 
       <div className="mt-7">
-        <Rail label={tr(UI.work.title)} resetKey={filter}>
-          {list.map((p) => (
-            <li key={p.slug} className="w-[76vw] max-w-[19rem] shrink-0 snap-start sm:w-[20rem] sm:max-w-none">
-              <div className="tile group relative flex h-full flex-col p-2.5 hover:bg-ink/10">
-                <a href={`#/work/${p.slug}`} aria-label={p.name}>
-                  <Shot project={p} />
+        <Rail label={tr(UI.work.title)}>
+          {PROJECTS.map((p, i) => (
+            <li key={p.slug} className="w-[84vw] max-w-[22rem] shrink-0 snap-start sm:w-[21rem]">
+              <article className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-ink/5">
+                <a href={`#/work/${p.slug}`} aria-label={`${p.name}: ${tr(UI.work.view)}`} className="absolute inset-0">
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt=""
+                      loading={i < 2 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <span className="flex h-full items-center justify-center p-6 text-center text-2xl font-semibold">{p.name}</span>
+                  )}
                 </a>
-                <div className="flex flex-1 flex-col px-2 pb-1.5 pt-3">
-                  <div className="flex items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-widest text-mute">
-                    <span>{tr(UI.work.filters[p.category])}</span>
-                    <span className="text-right">{tr(p.status)}</span>
-                  </div>
-                  <h3 className="mt-1.5 text-lg font-semibold tracking-tight">{p.name}</h3>
-                  <p className="mt-1 line-clamp-2 text-sm text-mute">{tr(p.line)}</p>
-                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-3">
-                    <a href={`#/work/${p.slug}`} className="border-b border-ink pb-0.5 text-sm font-medium">
-                      {tr(UI.work.view)}
+
+                <span className="num pointer-events-none absolute left-3 top-3 rounded-full bg-paper px-2.5 py-1 text-xs font-medium">
+                  {String(i + 1).padStart(2, "0")} / {total}
+                </span>
+
+                <div className="absolute inset-x-2 bottom-2 flex items-center gap-3 rounded-2xl border border-line bg-paper p-3 pl-4">
+                  <a href={`#/work/${p.slug}`} className="min-w-0 flex-1">
+                    <span className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-mute">
+                      {tr(UI.work.filters[p.category])} <span aria-hidden="true">&middot;</span> {tr(p.status)}
+                    </span>
+                    <span className="mt-0.5 block truncate text-lg font-semibold tracking-tight">{p.name}</span>
+                    <span className="mt-0.5 line-clamp-2 block text-[13px] leading-snug text-mute">{tr(p.line)}</span>
+                  </a>
+                  {p.url && (
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${tr(UI.work.visit)}: ${p.name}`}
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-paper hover:opacity-80"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M7 17L17 7M9 7h8v8" />
+                      </svg>
                     </a>
-                    {p.url && (
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-full bg-ink px-3.5 py-1.5 text-sm font-medium text-paper hover:opacity-80"
-                      >
-                        {tr(UI.work.visit)} &#8599;
-                      </a>
-                    )}
-                  </div>
+                  )}
                 </div>
-              </div>
+              </article>
             </li>
           ))}
         </Rail>
