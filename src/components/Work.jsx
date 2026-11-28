@@ -2,6 +2,7 @@ import { useLang } from "../lib/i18n.jsx";
 import { PROJECTS, UI } from "../data/content.js";
 import Rail from "./Rail.jsx";
 import Building from "./Building.jsx";
+import ClientStrip from "./ClientStrip.jsx";
 
 export default function Work() {
   const { tr } = useLang();
@@ -63,6 +64,7 @@ export default function Work() {
         </Rail>
       </div>
 
+      <ClientStrip />
       <Building />
     </section>
   );

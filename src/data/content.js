@@ -91,6 +91,8 @@ export const UI = {
     visit: { en: "Visit site", sw: "Tembelea tovuti" },
     building: { en: "Currently building", sw: "Tunayojenga sasa" },
     clients: { en: "Companies we have worked with", sw: "Kampuni tulizofanya nazo kazi" },
+    clientsShort: { en: "Trusted by", sw: "Wanaotuamini" },
+    clientsAll: { en: "All clients", sw: "Wateja wote" },
     shotNote: { en: "Screenshot to add", sw: "Picha itaongezwa" },
     prev: { en: "Previous", sw: "Iliyotangulia" },
     next: { en: "Next", sw: "Inayofuata" },
