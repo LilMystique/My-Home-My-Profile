@@ -1,7 +1,7 @@
 import { useLang } from "../lib/i18n.jsx";
 import { CLIENTS, UI } from "../data/content.js";
 
-// Companies we have worked with. Shows the logo when one is set, otherwise the name as a wordmark.
+// Companies we have worked with. Logos keep their own colours; a name stands in when there is no logo.
 export default function Clients({ page }) {
   const { tr } = useLang();
   if (!CLIENTS.length) return null;
@@ -14,16 +14,15 @@ export default function Clients({ page }) {
         </a>
       )}
       <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{tr(UI.work.clients)}</h2>
-      <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <ul className="mt-7 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
         {CLIENTS.map((c) => (
-          <li
-            key={c.name}
-            className="flex h-24 items-center justify-center rounded-2xl border border-line bg-ink/5 px-5 py-4 text-center"
-          >
+          <li key={c.name} className="aspect-[3/2] overflow-hidden max-sm:odd:last:col-span-2 max-sm:odd:last:aspect-[3/1] rounded-2xl border border-line bg-white">
             {c.logo ? (
-              <img src={c.logo} alt={c.name} className="max-h-full max-w-full object-contain grayscale" loading="lazy" />
+              <img src={c.logo} alt={c.name} title={c.name} className="h-full w-full object-cover" loading="lazy" />
             ) : (
-              <span className="text-base font-semibold tracking-tight">{c.name}</span>
+              <span className="flex h-full items-center justify-center px-4 text-center text-base font-semibold tracking-tight text-black">
+                {c.name}
+              </span>
             )}
           </li>
         ))}

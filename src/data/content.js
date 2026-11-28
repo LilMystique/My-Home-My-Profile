@@ -483,7 +483,16 @@ export const PROJECTS = [
 
 // Companies we have worked with. Add logo: "/clients/<file>.svg" (or .webp) once you have it;
 // until then the name is shown as a clean wordmark.
+// Logos are 600x400 tiles in public/clients, each on its own brand background.
 export const CLIENTS = [
+  { name: "The Swahili Bookshelf", logo: "/clients/swahili-bookshelf.webp" },
+  { name: "Volta", logo: "/clients/volta.webp" },
+  { name: "Phinahs Fresh Fruits Juice", logo: "/clients/phinahs.webp" },
+  { name: "255 to the World", logo: "/clients/255-to-the-world.webp" },
+  { name: "De Njile Gold Investment", logo: "/clients/de-njile.webp" },
+  { name: "The Joint Bar & Grill", logo: "/clients/the-joint.webp" },
+  { name: "Eden Essentials", logo: "/clients/eden-essentials.webp" },
+  { name: "Olpa Cosmetics", logo: "/clients/olpa-cosmetics.webp" },
   { name: "Vera International Travel", logo: "" },
 ];
 
